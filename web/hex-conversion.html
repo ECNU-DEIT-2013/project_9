@@ -8,89 +8,90 @@
 
   <template>
     <style>
-    .left{
-      width: 450px;
-      height: 350px;
-      border-style: solid;
-      border-width: 2px;
-      border-color:grey;
-      clear: left;
-      padding-top: 15px;
-      padding-left: 10px;
-    }
-    .top1{
-      width: auto;
-      height: 40px;
-      margin-top: 10px;
-    }
-    .top2{
-      margin-left: 10px;
-      display: inline-block;
-    }
-    .top3{
-      margin-left: auto;
-      display: inline-block;
-      vertical-align:top;
-    }
-    .top4{
-      margin-left: 85px;
-      display: inline-block;
-      vertical-align:top;
-    }
-    #left_beneath{
-      margin-top: 20px;
-      margin-left: 10px;
-    }
+      .left{
+        width: 450px;
+        height: 350px;
+        border-style: solid;
+        border-width: 2px;
+        border-color:grey;
+        clear: left;
+        padding-top: 15px;
+        padding-left: 10px;
+      }
+      .top1{
+        width: auto;
+        height: 40px;
+        margin-top: 10px;
+      }
+      .top2{
+        margin-left: 10px;
+        display: inline-block;
+      }
+      .top3{
+        margin-left: auto;
+        display: inline-block;
+        vertical-align:top;
+      }
+      .top4{
+        margin-left: 85px;
+        display: inline-block;
+        vertical-align:top;
+      }
+      #left_beneath{
+        margin-top: 20px;
+        margin-left: 10px;
+      }
       #presentation{
         display: inline-block;
       }
     </style>
     <div>
-    <div class="left">
-      <div class="top1">
-       <div class="top2"><input type="text" id="text"></div>
-        <div class="top2"><label>cll</label></div>
-        <div class="top2">
-          <select>
-          <option>2</option>
-          <option>8</option>
-          <option>10</option>
-          <option>16</option>
-        </select>
+      <div class="left">
+        <div class="top1">
+          <div class="top2"><input type="text" id="text"/></div>
+          <div class="top2"><label>cll</label></div>
+          <div class="top2">
+            <select id="select" style="width: 70px">
+              <option selected="selected">Default</option>
+              <option value=2>2</option>
+              <option value=8>8</option>
+              <option value=10>10</option>
+              <option value=16>16</option>
+            </select>
+          </div>
+          <div class="top2"><button on-click="{{add}}" id="add">Add</button></div>
+          <div class="top2"><input type="button"  on-click="{{clear}}" id="clear" value="Clear"></div>
         </div>
-        <div class="top2"><input type="button" id="add" value="Add" ></div>
-        <div class="top2"><input type="button" id="clear" value="Clear"></div>
+        <div id="left_beneath">
+          <div class="top1">
+            <div class="top3"><label>2</label></div>
+            <div class="top4"><textarea id="textarea2" readonly></textarea></div>
+            <div class="top4"><input type="button" id="button1" on-click="{{present2}}" value="present2"></div>
+            <br>
+          </div>
+          <div class="top1">
+            <div class="top3"><label>8</label></div>
+            <div class="top4"><textarea id="textarea8" readonly></textarea></div>
+            <div class="top4"><input type="button" id="button8" on-click="{{present8}}" value="present8"></div>
+            <br>
+          </div>
+          <div class="top1">
+            <div class="top3"><label>10</label></div>
+            <div class="top4"><textarea id="textarea10" readonly></textarea></div>
+            <div class="top4"><input type="button" id="button10" on-click="{{present10}}" value="present10"></div>
+            <br>
+          </div>
+          <div class="top1">
+            <div class="top3"><label>16</label></div>
+            <div class="top4"><textarea id="textarea16" readonly></textarea></div>
+            <div class="top4"><input type="button" id="button16" on-click="{{present16}}" value="present16"></div>
+            <br>
+          </div>
+        </div>
       </div>
-      <div id="left_beneath">
-        <div class="top1">
-          <div class="top3"><label>2</label></div>
-          <div class="top4"><textarea id="textarea1" readonly></textarea></div>
-            <div class="top4"><input type="button" id="button1" value="yanshi"></div>
-          <br>
-        </div>
-        <div class="top1">
-          <div class="top3"><label>8</label></div>
-          <div class="top4"><textarea id="textarea8" readonly></textarea></div>
-          <div class="top4"><input type="button" id="button8" value="yanshi"></div>
-          <br>
-        </div>
-        <div class="top1">
-          <div class="top3"><label>10</label></div>
-          <div class="top4"><textarea id="textarea10" readonly></textarea></div>
-          <div class="top4"><input type="button" id="button10" value="yanshi"></div>
-          <br>
-        </div>
-        <div class="top1">
-          <div class="top3"><label>16</label></div>
-          <div class="top4"><textarea id="textarea16" readonly></textarea></div>
-          <div class="top4"><input type="button" id="button16" value="yanshi"></div>
-        <br>
-        </div>
+      <div id="presentation">
+        <textarea> </textarea>
       </div>
-    </div>
-    <div id="presentation">
-      <textarea></textarea>
-    </div>
     </div>
   </template>
 

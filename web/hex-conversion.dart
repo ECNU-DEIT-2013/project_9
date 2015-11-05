@@ -12,41 +12,75 @@ class HexConversion extends PolymerElement {
 
   HexConversion.created() : super.created();
 
-  ButtonElement stopButton;
-  ButtonElement startButton;
-  ButtonElement resetButton;
-    
+  ButtonElement addButton,clearButton,button2,button8,button10,button16;
+  TextAreaElement textarea2,textarea8,textarea10,textarea16;
+  InputElement text;
+  SelectElement select;
+
   @override
   void attached() {
     super.attached();
-    startButton = $['startButton'];
-    stopButton = $['stopButton'];
-    resetButton = $['resetButton'];
-
-    stopButton.disabled = true;
-    resetButton.disabled = true;
+    addButton=$['add'];
+    clearButton=$['clear'];
+    button2=$['button2'];
+    button8=$['button8'];
+    button10=$['button10'];
+    button16=$['button16'];
+    textarea2=$['textarea2'];
+    textarea8=$['textarea8'];
+    textarea10=$['textarea10'];
+    textarea16=$['textarea16'];
+    //text=$['text'];
+    select=$['select'];
   }
-  
+
   @override
   void detached() {
     super.detached();
   }
-  
-  void start(Event e, var detail, Node target) {
-    startButton.disabled = true;
-    stopButton.disabled = false;
-    resetButton.disabled = true;
-  }
-  
-  void stop(Event e, var detail, Node target) {
-    startButton.disabled = false;
-    resetButton.disabled = false;
-    stopButton.disabled = true;
-  }
-  
-  void reset(Event e, var detail, Node target) {
-    resetButton.disabled = true;
+
+  void add(Event e, var detail, Node target) {
+    select=$['select'];
+    if(select.options[select.selectedIndex].value=="2"){
+      $['textarea2'].value="hello";
+    }
+    else if(select.options[select.selectedIndex].value=="8")
+    {
+      $['textarea8'].value="8";
+    }
+    else if(select.options[select.selectedIndex].value=="10")
+    {
+      $['textarea10'].value="10";
+    }
+    else if(select.options[select.selectedIndex].value=="16")
+    {
+      $['textarea16'].value="16";
+    }
+    else{
+
+    }
+
   }
 
+  void clear(Event e, var detail, Node target) {
+    $['text'].value="";
+    $['textarea2'].value="";
+    $['textarea8'].value="";
+    $['textarea10'].value="";
+    $['textarea16'].value="";
+  }
+
+  void present2(Event e, var detail, Node target) {
+    $['text'].value="hello";
+  }
+  void present8(Event e, var detail, Node target) {
+    $['text'].value="hello";
+  }
+  void present10(Event e, var detail, Node target) {
+    $['text'].value="hello";
+  }
+  void present16(Event e, var detail, Node target) {
+    $['text'].value="hello";
+  }
 
 }
