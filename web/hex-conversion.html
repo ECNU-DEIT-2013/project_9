@@ -17,6 +17,7 @@
         clear: left;
         padding-top: 15px;
         padding-left: 10px;
+        float:left;
       }
       .top1{
         width: auto;
@@ -41,11 +42,18 @@
         margin-top: 20px;
         margin-left: 10px;
       }
-      #presentation{
-        display: inline-block;
+      .presentation{
+        margin-left: 500px;
+        background-color: white;
+        width: 450px;
+        height: 370px;
+        border-style: solid;
+        border-width: 2px;
+        border-color:grey;
+        overflow: auto;
       }
     </style>
-    <div>
+    <div id="all">
       <div class="left">
         <div class="top1">
           <div class="top2"><input type="text" id="text" onfocus="style.background='blue'" onblur="style.background='white'"/></div>
@@ -89,8 +97,8 @@
           </div>
         </div>
       </div>
-      <div id="presentation">
-        <textarea> </textarea>
+      <div class="presentation">
+        <canvas id="canvas" width="450px" height="770px"></canvas>
       </div>
     </div>
   </template>

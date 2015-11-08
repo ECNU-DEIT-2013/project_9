@@ -14,7 +14,6 @@ class HexConversion extends PolymerElement {
 
   ButtonElement addButton,clearButton,button2,button8,button10,button16;
   TextAreaElement textarea2,textarea8,textarea10,textarea16;
-  InputElement text;
   SelectElement select;
 
   @override
@@ -69,8 +68,19 @@ class HexConversion extends PolymerElement {
     $['textarea16'].value="";
   }
 
-  void present2(Event e, var detail, Node target) {
-    $['text'].value="hello";
+  void present2(Event e, var detail, Node target){
+    var canvas =$['canvas'];
+    var content= canvas.getContext('2d');
+    //var value = int.parse( $['text'].value);
+    var x=10;
+    var y=32;
+    for(var i=0;i<=20;i++){
+      drawRect(content,x,y);
+      drawFont(content,x,y,i);
+      x=x+10;
+      y=y+32;
+    }
+
   }
   void present8(Event e, var detail, Node target) {
     $['text'].value="hello";
@@ -80,6 +90,19 @@ class HexConversion extends PolymerElement {
   }
   void present16(Event e, var detail, Node target) {
     $['text'].value="hello";
+  }
+  void drawRect(var content , int x, int y){
+    content.strokeStyle ="bule";
+    content.lineWidth =2;
+    content.strokeRect(10+x,20+y,60,30);
+    content.fillStyle="white";
+    content.fillRect(11+x,19+y,60,30);
+  }
+
+  void drawFont(var content ,int x, int y, int n){
+    content.font="bold 24px Times New Roman";
+    content.fillStyle="grey";
+    content.fillText('$n',30+x,43+y);
   }
 
 }
