@@ -57,9 +57,8 @@ class HexConversion extends PolymerElement {
       $['textarea16'].value="16";
     }
     else{
-
+      window.alert('Please choose the right number!!');
     }
-
   }
 
   void clear(Event e, var detail, Node target) {
