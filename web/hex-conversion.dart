@@ -69,6 +69,7 @@ class HexConversion extends PolymerElement {
   }
 
   void present2(Event e, var detail, Node target){
+
     var canvas =$['canvas'];
     var content= canvas.getContext('2d');
     //var value = int.parse( $['text'].value);
@@ -80,29 +81,72 @@ class HexConversion extends PolymerElement {
       x=x+10;
       y=y+32;
     }
+    var s=$['textarea2'];
+    zhuanhuan(2,s);
 
   }
+  void zhuanhuan(int jz,var input)
+  {
+    int b1=int.parse($['text'].value);
+    int s1;
+    String s2="";
+    while(b1~/jz!=0){
+      s1=b1%jz;
+      b1=b1~/jz;
+      if(s1<10){
+        s2=s1.toString()+s2;
+      }
+      else{
+        if(s1==10){s2='A'+s2;}
+        else if(s1==11){s2='B'+s2;}
+        else if(s1==12){s2='C'+s2;}
+        else if(s1==13){s2='D'+s2;}
+        else if(s1==14){s2='E'+s2;}
+        else{s2='F'+s2;}
+      }
+    }
+    if(b1<10){
+      s2=b1.toString()+s2;
+    }
+    else{
+      if(b1==10){s2='A'+s2;}
+      else if(b1==11){s2='B'+s2;}
+      else if(b1==12){s2='C'+s2;}
+      else if(b1==13){s2='D'+s2;}
+      else if(b1==14){s2='E'+s2;}
+      else{s2='F'+s2;}
+    }
+    input.value=s2;
+  }
   void present8(Event e, var detail, Node target) {
-    $['text'].value="hello";
+    //$['text'].value="hello";
+    var s=$['textarea8'];
+    zhuanhuan(8,s);
   }
   void present10(Event e, var detail, Node target) {
-    $['text'].value="hello";
+    //$['text'].value="hello";
+    var s=$['textarea10'];
+    zhuanhuan(10,s);
   }
   void present16(Event e, var detail, Node target) {
-    $['text'].value="hello";
+    //$['text'].value="hello16";
+    var s=$['textarea16'];
+    zhuanhuan(16,s);
   }
   void drawRect(var content , int x, int y){
     content.strokeStyle ="bule";
     content.lineWidth =2;
-    content.strokeRect(10+x,20+y,60,30);
+    content.strokeRect(10+x,20+y,260-x,30);
     content.fillStyle="white";
-    content.fillRect(11+x,19+y,60,30);
+    content.fillRect(11+x,19+y,260-x,30);
   }
 
   void drawFont(var content ,int x, int y, int n){
     content.font="bold 24px Times New Roman";
     content.fillStyle="grey";
-    content.fillText('$n',30+x,43+y);
+    content.fillText('$n',130+x/2,43+y);
+    content.fillText('2',x-5,43+y);
   }
+
 
 }
