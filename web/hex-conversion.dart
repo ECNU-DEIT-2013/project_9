@@ -8,29 +8,29 @@ import 'package:polymer/polymer.dart';
 
 @CustomTag('hex-conversion')
 class HexConversion extends PolymerElement {
-  @observable String counter='00:00';
+  @observable String counter = '00:00';
 
   HexConversion.created() : super.created();
 
-  ButtonElement addButton,clearButton,button2,button8,button10,button16;
-  TextAreaElement textarea2,textarea8,textarea10,textarea16;
+  ButtonElement addButton, clearButton, button2, button8, button10, button16;
+  TextAreaElement textarea2, textarea8, textarea10, textarea16;
   SelectElement select;
 
   @override
   void attached() {
     super.attached();
-    addButton=$['add'];
-    clearButton=$['clear'];
-    button2=$['button2'];
-    button8=$['button8'];
-    button10=$['button10'];
-    button16=$['button16'];
-    textarea2=$['textarea2'];
-    textarea8=$['textarea8'];
-    textarea10=$['textarea10'];
-    textarea16=$['textarea16'];
+    addButton = $['add'];
+    clearButton = $['clear'];
+    button2 = $['button2'];
+    button8 = $['button8'];
+    button10 = $['button10'];
+    button16 = $['button16'];
+    textarea2 = $['textarea2'];
+    textarea8 = $['textarea8'];
+    textarea10 = $['textarea10'];
+    textarea16 = $['textarea16'];
     //text=$['text'];
-    select=$['select'];
+    select = $['select'];
   }
 
   @override
@@ -39,51 +39,80 @@ class HexConversion extends PolymerElement {
   }
 
   void add(Event e, var detail, Node target) {
-    select=$['select'];
-    if(select.options[select.selectedIndex].value=="2"){
-      $['textarea2'].value="hello";
+    select = $['select'];
+    if (select.options[select.selectedIndex].value == "2") {
+      var s=$['text'];
+      $['textarea10'].value = zhuanshi(2,s);
+      //  var s=$['textarea8'];
+      // zhuanhuan(8,s);
+
     }
-    else if(select.options[select.selectedIndex].value=="8")
-    {
-      $['textarea8'].value="8";
+    else if (select.options[select.selectedIndex].value == "8") {
+      var s=$['text'];
+      $['textarea8'].value = zhuanshi(8,s);
     }
-    else if(select.options[select.selectedIndex].value=="10")
-    {
-      $['textarea10'].value="10";
+    else if (select.options[select.selectedIndex].value == "10") {
+      $['textarea10'].value = "10";
     }
-    else if(select.options[select.selectedIndex].value=="16")
-    {
-      $['textarea16'].value="16";
+    else if (select.options[select.selectedIndex].value == "16") {
+      $['textarea16'].value = "16";
     }
-    else{
+    else {
       window.alert('Please choose the right number!!');
     }
   }
 
   void clear(Event e, var detail, Node target) {
-    $['text'].value="";
-    $['textarea2'].value="";
-    $['textarea8'].value="";
-    $['textarea10'].value="";
-    $['textarea16'].value="";
+    $['text'].value = "";
+    $['textarea2'].value = "";
+    $['textarea8'].value = "";
+    $['textarea10'].value = "";
+    $['textarea16'].value = "";
   }
 
-  void present2(Event e, var detail, Node target){
+  void present2(Event e, var detail, Node target) {
 
-    var canvas =$['canvas'];
-    var content= canvas.getContext('2d');
+    var canvas = $['canvas'];
+    var content = canvas.getContext('2d');
     //var value = int.parse( $['text'].value);
-    var x=10;
-    var y=32;
-    for(var i=0;i<=20;i++){
-      drawRect(content,x,y);
-      drawFont(content,x,y,i);
-      x=x+10;
-      y=y+32;
+    var x = 10;
+    var y = 32;
+    for (var i = 0;i <= 20;i++) {
+      drawRect(content, x, y);
+      drawFont(content, x, y, i);
+      x = x + 10;
+      y = y + 32;
     }
-    var s=$['textarea2'];
-    zhuanhuan(2,s);
+    var s = $['textarea2'];
+    zhuanhuan(2, s);
 
+  }
+  void zhuanshi(int jz, var input) {
+    int b1 = int.parse($['text'].value);
+    String s1 = b1.toString();
+    int len = s1.length();
+    print(len);
+    int num,m = 0;
+    var a = new List<String>();
+    a.add(s1);
+    for (int i = len - 1;i >= 0;i--){
+      a[m]= s1.substring(i,i-1);
+      m++;
+    }
+
+    print(a);
+
+    assert(a is String);
+    for (int i = len - 1;i >= 0;i--) {
+      if (a[i] != '0' && a[i] != '1') {
+        //System.out.println("input?wrong!!");
+        num = 0;
+        break;
+      }
+      num = (int)(num + Math.pow(2, (len - 1) - i));
+    }
+    input.value=num;
+    return num;
   }
   void zhuanhuan(int jz,var input)
   {
@@ -142,7 +171,7 @@ class HexConversion extends PolymerElement {
   }
 
   void drawFont(var content ,int x, int y, int n){
-    content.font="bold 24px Times New Roman";
+    content.font="bold 24px Times  New Roman";
     content.fillStyle="grey";
     content.fillText('$n',130+x/2,43+y);
     content.fillText('2',x-5,43+y);
