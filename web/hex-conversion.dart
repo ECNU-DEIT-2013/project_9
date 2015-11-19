@@ -5,6 +5,7 @@
 import 'dart:html';
 import 'dart:async';
 import 'package:polymer/polymer.dart';
+import  'dart:math' as Math;
 
 @CustomTag('hex-conversion')
 class HexConversion extends PolymerElement {
@@ -42,20 +43,22 @@ class HexConversion extends PolymerElement {
     select = $['select'];
     if (select.options[select.selectedIndex].value == "2") {
       var s=$['text'];
-      $['textarea10'].value = zhuanshi(2,s);
+      $['textarea10'].value = zhuanshi(2,s).toString();
       //  var s=$['textarea8'];
       // zhuanhuan(8,s);
 
     }
     else if (select.options[select.selectedIndex].value == "8") {
       var s=$['text'];
-      $['textarea8'].value = zhuanshi(8,s);
+      $['textarea10'].value =zhuanshi(8,s).toString();
     }
     else if (select.options[select.selectedIndex].value == "10") {
-      $['textarea10'].value = "10";
+      var s=$['text'];
+      $['textarea10'].value =zhuanshi(10,s).toString();
     }
     else if (select.options[select.selectedIndex].value == "16") {
-      $['textarea16'].value = "16";
+      var s=$['text'];
+      $['textarea10'].value =zhuanshi(16,s).toString();
     }
     else {
       window.alert('Please choose the right number!!');
@@ -90,32 +93,42 @@ class HexConversion extends PolymerElement {
     zhuanhuan(2, s);
 
   }
-  void zhuanshi(int jz, var input) {
+ int zhuanshi(int jz, var input) {
     int b1 = int.parse($['text'].value);
-    String s1 = b1.toString();
-    int len = s1.length();
-    print(len);
-    int num,m = 0;
+    String s1 = $['text'].value;//b1.toString()
+    int len = s1.length;
+   // print(len);
+    int num= 0,z=0,m=len-1;
     var a = new List<String>();
-    a.add(s1);
+   // a.add(s1);
     for (int i = len - 1;i >= 0;i--){
-      a[m]= s1.substring(i,i-1);
-      m++;
+       if (s1[i] == 'A') s1[i] = 10;
+      else if (s1[i] == 'B')s1[i] = 11;
+      else if (s1[i] == 'C')s1[i] = 12;
+      else if (s1[i] == 'D')s1[i] = 13;
+      else if (s1[i] == 'E')s1[i] = 14;
+      else if (s1[i]== 'F')s1[i] = 15;
+      a.add(s1[i]);
+      num++;
     }
 
-    print(a);
-
-    assert(a is String);
+   // print(a);
+   // assert(a is String);
+   int num1 = 0;
     for (int i = len - 1;i >= 0;i--) {
-      if (a[i] != '0' && a[i] != '1') {
-        //System.out.println("input?wrong!!");
-        num = 0;
-        break;
-      }
-      num = (int)(num + Math.pow(2, (len - 1) - i));
+     z=int.parse(a[i]);
+   /*if (!(int.parse(a[i])<10)) {
+       if (a[i] == 'A') z = 10;
+       else if (a[i] == 'B')z = 11;
+       else if (a[i] == 'C')z = 12;
+       else if (a[i] == 'D')z = 13;
+       else if (a[i] == 'E')z = 14;
+       else if (a[i]== 'F')z = 15;
+     }*/
+     num1 = (num1 + Math.pow(jz, i)*z);
     }
-    input.value=num;
-    return num;
+   // input.value=num;
+    return num1;
   }
   void zhuanhuan(int jz,var input)
   {
