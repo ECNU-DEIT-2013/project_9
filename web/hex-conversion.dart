@@ -72,7 +72,8 @@ class HexConversion extends PolymerElement {
 
   void present2(Event e, var detail, Node target) {
 
-    var canvas = $['canvas'];
+
+    /*var canvas = $['canvas'];
     var content = canvas.getContext('2d');
     //var value = int.parse( $['text'].value);
     var x = 10;
@@ -82,7 +83,9 @@ class HexConversion extends PolymerElement {
       drawFont(content, x, y, i);
       x = x + 10;
       y = y + 32;
-    }
+    }*/
+
+
     var s = $['textarea2'];
     zhuanhuan(2, s);
 
@@ -116,12 +119,21 @@ class HexConversion extends PolymerElement {
   }
   void zhuanhuan(int jz,var input)
   {
+    var canvas = $['canvas'];
+    var content = canvas.getContext('2d');
+    //var value = int.parse( $['text'].value);
+    var x = 10;
+    var y = 32;
     int b1=int.parse($['text'].value);
     int s1;
     String s2="";
     while(b1~/jz!=0){
       s1=b1%jz;
+      drawRect(content, x, y);
+      drawFont(content, x, y, b1,jz,s1);
       b1=b1~/jz;
+      x = x + 10;
+      y = y + 32;
       if(s1<10){
         s2=s1.toString()+s2;
       }
@@ -145,6 +157,7 @@ class HexConversion extends PolymerElement {
       else if(b1==14){s2='E'+s2;}
       else{s2='F'+s2;}
     }
+    drawFont2(content, x, y,b1);
     input.value=s2;
   }
   void present8(Event e, var detail, Node target) {
@@ -170,12 +183,24 @@ class HexConversion extends PolymerElement {
     content.fillRect(11+x,19+y,260-x,30);
   }
 
-  void drawFont(var content ,int x, int y, int n){
+  void drawFont(var content ,int x, int y, int n,int jz,int yushu){
+    //content is the box;x & y is the Coordinates;n is the old number;jz is jinzhi
+    content.font="bold 24px Times  New Roman";
+    content.fillStyle="grey";
+    int zuo;
+    if(jz==2 || jz==8){
+      zuo=x-5;
+    }
+    else{
+      zuo=x-15;
+    }
+    content.fillText('$n',130+x/2,43+y);
+    content.fillText('$yushu',300,43+y);
+    content.fillText('$jz',zuo,43+y);
+  }
+  void drawFont2(var content ,int x, int y, int n){
     content.font="bold 24px Times  New Roman";
     content.fillStyle="grey";
     content.fillText('$n',130+x/2,43+y);
-    content.fillText('2',x-5,43+y);
   }
-
-
 }
