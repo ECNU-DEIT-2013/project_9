@@ -73,7 +73,7 @@ class HexConversion extends PolymerElement {
     var canvas =$['canvas'];
     var content= canvas.getContext('2d');
     //var value = int.parse( $['text'].value);
-    var x=10;
+    var x=20;
     var y=32;
     for(var i=0;i<=20;i++){
       drawRect(content,x,y);
