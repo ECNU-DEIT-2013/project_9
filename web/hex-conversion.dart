@@ -94,7 +94,7 @@ class HexConversion extends PolymerElement {
 
   }
  int zhuanshi(int jz, var input) {
-    int b1 = int.parse($['text'].value);
+   //int b1 = int.parse($['text'].value);
     String s1 = $['text'].value;//b1.toString()
     int len = s1.length;
    // print(len);
@@ -102,13 +102,13 @@ class HexConversion extends PolymerElement {
     var a = new List<String>();
    // a.add(s1);
     for (int i = len - 1;i >= 0;i--){
-       if (s1[i] == 'A') s1[i] = 10;
-      else if (s1[i] == 'B')s1[i] = 11;
-      else if (s1[i] == 'C')s1[i] = 12;
-      else if (s1[i] == 'D')s1[i] = 13;
-      else if (s1[i] == 'E')s1[i] = 14;
-      else if (s1[i]== 'F')s1[i] = 15;
-      a.add(s1[i]);
+       if (s1[i] == 'A')a.add('10');
+       else if (s1[i] == 'B')a.add('11');
+       else if (s1[i] == 'C')a.add('12');
+       else if (s1[i] == 'D')a.add('13');
+       else if (s1[i] == 'E')a.add('14');
+       else if (s1[i] == 'F')a.add('15');
+       else a.add(s1[i]);
       num++;
     }
 
