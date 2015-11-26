@@ -71,23 +71,12 @@ class HexConversion extends PolymerElement {
     $['textarea8'].value = "";
     $['textarea10'].value = "";
     $['textarea16'].value = "";
+    var canvas = $['canvas'];
+    var content = canvas.getContext('2d');
+    canvasclear(content);
   }
 
   void present2(Event e, var detail, Node target) {
-
-
-    /*var canvas = $['canvas'];
-    var content = canvas.getContext('2d');
-    //var value = int.parse( $['text'].value);
-    var x = 10;
-    var y = 32;
-    for (var i = 0;i <= 20;i++) {
-      drawRect(content, x, y);
-      drawFont(content, x, y, i);
-      x = x + 10;
-      y = y + 32;
-    }*/
-
 
     var s = $['textarea2'];
     zhuanhuan(2, s);
@@ -216,4 +205,8 @@ class HexConversion extends PolymerElement {
     content.fillStyle="grey";
     content.fillText('$n',130+x/2,43+y);
   }
+  void canvasclear(var content){
+    content.clearRect(0,0,450,570);
+  }
+
 }
