@@ -94,7 +94,8 @@ class HexConversion extends PolymerElement {
 
   }
  int zhuanshi(int jz, var input) {
-   //int b1 = int.parse($['text'].value);
+   var canvas = $['canvas'];
+   var content = canvas.getContext('2d');
     String s1 = $['text'].value;//b1.toString()
     int len = s1.length;
    // print(len);
@@ -112,8 +113,8 @@ class HexConversion extends PolymerElement {
       num++;
     }
 
-   // print(a);
-   // assert(a is String);
+
+
    int num1 = 0;
     for (int i = len - 1;i >= 0;i--) {
      z=int.parse(a[i]);
@@ -128,7 +129,9 @@ class HexConversion extends PolymerElement {
      num1 = (num1 + Math.pow(jz, i)*z);
     }
    // input.value=num;
+   drawFont3(content,50,50,s1,num1);
     return num1;
+
   }
   void zhuanhuan(int jz,var input)
   {
@@ -215,5 +218,22 @@ class HexConversion extends PolymerElement {
     content.font="bold 24px Times  New Roman";
     content.fillStyle="grey";
     content.fillText('$n',130+x/2,43+y);
+  }
+  void drawFont3(var content, int x, int y, String n,int m){
+    content.font="bold 24px Times New Roman";
+    content.fillStyle="grey";
+    for(var i=0;i<n.length;i++){
+      content.fillText('${n[i]}',x,y+10);
+      content.fillText('*',x+15,y+10);
+      content.fillText('2',x+30,y+10);
+      content.fillText('^',x+45,y+10);
+      content.fillText('${n.length-i-1}',x+60,y+10);
+      if(i<=n.length-2){
+        content.fillText('+',x+75,y+10);
+      }
+      x=x+90;
+    }
+    content.fillText('=',x-10,y+10);
+    content.fillText('${m.toString()}',x+5,y+10);
   }
 }
