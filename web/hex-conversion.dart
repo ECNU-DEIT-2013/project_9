@@ -9,7 +9,6 @@ import  'dart:math' as Math;
 
 @CustomTag('hex-conversion')
 class HexConversion extends PolymerElement {
-  @observable String counter = '00:00';
 
   HexConversion.created() : super.created();
 
@@ -30,7 +29,6 @@ class HexConversion extends PolymerElement {
     textarea8 = $['textarea8'];
     textarea10 = $['textarea10'];
     textarea16 = $['textarea16'];
-    //text=$['text'];
     select = $['select'];
   }
 
@@ -42,23 +40,16 @@ class HexConversion extends PolymerElement {
   void add(Event e, var detail, Node target) {
     select = $['select'];
     if (select.options[select.selectedIndex].value == "2") {
-      var s=$['text'];
-      $['textarea10'].value = zhuanshi(2,s).toString();
-      //  var s=$['textarea8'];
-      // zhuanhuan(8,s);
-
+      cal2();
     }
     else if (select.options[select.selectedIndex].value == "8") {
-      var s=$['text'];
-      $['textarea10'].value =zhuanshi(8,s).toString();
+      cal8();
     }
     else if (select.options[select.selectedIndex].value == "10") {
-      var s=$['text'];
-      $['textarea10'].value =zhuanshi(10,s).toString();
+      cal10();
     }
     else if (select.options[select.selectedIndex].value == "16") {
-      var s=$['text'];
-      $['textarea10'].value =zhuanshi(16,s).toString();
+      cal16();
     }
     else {
       window.alert('Please choose the right number!!');
@@ -71,26 +62,56 @@ class HexConversion extends PolymerElement {
     $['textarea8'].value = "";
     $['textarea10'].value = "";
     $['textarea16'].value = "";
+
     var canvas = $['canvas'];
     var content = canvas.getContext('2d');
     canvasclear(content);
   }
+  void cal2() {       //将2进制转换为其他进制
+    var s=$['text'];
+    $['textarea10'].value = cal_to_10(2,s).toString();   //将2进制转换成10进制
+
+    cal_10_to(8,cal_to_10(2,s).toString(),$['textarea8']);  //将2进制转成8进制
+
+  }
+
+  void cal8() {    //将8进制转换为其他进制
+    var s=$['text'];
+    $['textarea10'].value =cal_to_10(8,s).toString();   //将8进制转换成10进制
+  }
+
+  void cal10() {   //将10进制转换为其他进制
+    var s2 = $['textarea2'];           //将10进制转换为2进制,2是进制，$['text'].value是输入值，s2是输出值
+    cal_10_to(2,$['text'].value,s2);
+
+    var s8=$['textarea8'];
+    cal_10_to(8,$['text'].value,s8);                       //将10进制转换为8进制
+
+    var s10=$['text'];
+    $['textarea10'].value =cal_to_10(10,s10).toString();        //将10进制转换为自身
+
+    var s16=$['textarea16'];      //将10进制转换为16进制
+    cal_10_to(16,$['text'].value,s16);
+
+  }
+
+  void cal16() {       //将16进制转换为其他进制
+    var s10=$['text'];
+    $['textarea10'].value =cal_to_10(16,s10).toString();    //将16进制转换成10进制
+  }
 
   void present2(Event e, var detail, Node target) {
 
-    var s = $['textarea2'];
-    zhuanhuan(2, s);
+
 
   }
- int zhuanshi(int jz, var input) {
+ int cal_to_10(int jz, var input) {
    var canvas = $['canvas'];
    var content = canvas.getContext('2d');
-    String s1 = $['text'].value;//b1.toString()
+    String s1 = $['text'].value;
     int len = s1.length;
-   // print(len);
     int num= 0,z=0,m=len-1;
     var a = new List<String>();
-   // a.add(s1);
     for (int i = len - 1;i >= 0;i--){
        if (s1[i] == 'A')a.add('10');
        else if (s1[i] == 'B')a.add('11');
@@ -107,29 +128,21 @@ class HexConversion extends PolymerElement {
    int num1 = 0;
     for (int i = len - 1;i >= 0;i--) {
      z=int.parse(a[i]);
-   /*if (!(int.parse(a[i])<10)) {
-       if (a[i] == 'A') z = 10;
-       else if (a[i] == 'B')z = 11;
-       else if (a[i] == 'C')z = 12;
-       else if (a[i] == 'D')z = 13;
-       else if (a[i] == 'E')z = 14;
-       else if (a[i]== 'F')z = 15;
-     }*/
+
      num1 = (num1 + Math.pow(jz, i)*z);
     }
-   // input.value=num;
    drawFont3(content,50,50,s1,num1);
     return num1;
 
   }
-  void zhuanhuan(int jz,var input)
+  void cal_10_to(int jz,String input,var output)
   {
     var canvas = $['canvas'];
     var content = canvas.getContext('2d');
     //var value = int.parse( $['text'].value);
     var x = 10;
     var y = 32;
-    int b1=int.parse($['text'].value);
+    int b1=int.parse(input);
     int s1;
     String s2="";
     while(b1~/jz!=0){
@@ -163,23 +176,21 @@ class HexConversion extends PolymerElement {
       else{s2='F'+s2;}
     }
     drawFont2(content, x, y,b1);
-    input.value=s2;
+    output.value=s2;
   }
   void present8(Event e, var detail, Node target) {
-    //$['text'].value="hello";
-    var s=$['textarea8'];
-    zhuanhuan(8,s);
+
+
   }
+
   void present10(Event e, var detail, Node target) {
-    //$['text'].value="hello";
-    var s=$['textarea10'];
-    zhuanhuan(10,s);
+
   }
+
   void present16(Event e, var detail, Node target) {
-    //$['text'].value="hello16";
-    var s=$['textarea16'];
-    zhuanhuan(16,s);
+
   }
+
   void drawRect(var content , int x, int y){
     content.strokeStyle ="bule";
     content.lineWidth =2;
@@ -208,7 +219,6 @@ class HexConversion extends PolymerElement {
     content.fillStyle="grey";
     content.fillText('$n',130+x/2,43+y);
   }
-<<<<<<< HEAD
   void drawFont3(var content, int x, int y, String n,int m){
     content.font="bold 24px Times New Roman";
     content.fillStyle="grey";
@@ -226,10 +236,8 @@ class HexConversion extends PolymerElement {
     content.fillText('=',x-10,y+10);
     content.fillText('${m.toString()}',x+5,y+10);
   }
-=======
   void canvasclear(var content){
     content.clearRect(0,0,450,570);
   }
 
->>>>>>> origin/master
 }
