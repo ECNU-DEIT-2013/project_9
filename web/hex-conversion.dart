@@ -75,8 +75,10 @@ class HexConversion extends PolymerElement {
     var s8 =$['textarea8'];
     var s10 = $['textarea10'];
     var s16=$['textarea16'];
-
+    s8.value=s.value;   //将8进制转换成自己
     s10.value =cal_to_10(8,s).toString();   //将8进制转换成10进制,这句代码是十进制转换成其他进制的前提
+    cal_10_to(2,s10.value,s2);   //将8进制转换成2进制
+    cal_10_to(16,s10.value,s16);    //将8进制转换成16进制
   }
 
   void cal10() {   //将10进制转换为其他进制
@@ -101,15 +103,43 @@ class HexConversion extends PolymerElement {
   }
 
   void cal16() {       //将16进制转换为其他进制
+    var s=$['text'];
+    var s2=$['textarea2'];
+    var s8 =$['textarea8'];
     var s10=$['text'];
+    var s16=$['textarea16'];
+    s16.value=s.value;  //将16进制转换成16进制
     $['textarea10'].value =cal_to_10(16,s10).toString();    //将16进制转换成10进制
+    cal_10_to(8,$['textarea10'].value,s8);    //将16进制转换成8进制
+    cal_10_to(2,$['textarea10'].value,s2);    //将16进制转换成2进制
   }
 
   void present2(Event e, var detail, Node target) {
+    select = $['select'];
+    var s=$['text'];
+    var s2=$['textarea2'];
+    var s8 =$['textarea8'];
+    var s10 = $['textarea10'];
+    var s16=$['textarea16'];
+    canvasClear();
+    if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成8进制
+      s10.value = cal_to_10(2,s).toString();
 
+      cal_10_to_draw(8,s10.value);
+    }
+    else if (select.options[select.selectedIndex].value == "8") {
+      //null
+    }
+    else if (select.options[select.selectedIndex].value == "10") {
 
-
+    }
+    else if (select.options[select.selectedIndex].value == "16") {
+    }
+    else {
+      window.alert('Please choose the right number!!');
+    }
   }
+
  int cal_to_10(int jz, var input) {
     String s1 = input.value;
     int len = s1.length;
