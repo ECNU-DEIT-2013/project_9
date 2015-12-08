@@ -123,17 +123,20 @@ class HexConversion extends PolymerElement {
     var s16=$['textarea16'];
     canvasClear();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成8进制
-      s10.value = cal_to_10(2,s).toString();
 
-      cal_10_to_draw(8,s10.value);
     }
     else if (select.options[select.selectedIndex].value == "8") {
-      //null
+      var ss = cal_to_10(8,s).toString();
+      cal_to_10_draw(8,s.value);
+      cal_10_to_draw(2,ss);
     }
     else if (select.options[select.selectedIndex].value == "10") {
-
+      cal_10_to_draw(2,s.value);
     }
     else if (select.options[select.selectedIndex].value == "16") {
+      var ss = cal_to_10(16,s).toString();
+      cal_to_10_draw(16,s.value);
+      cal_10_to_draw(2,ss);
     }
     else {
       window.alert('Please choose the right number!!');
@@ -214,17 +217,20 @@ class HexConversion extends PolymerElement {
     var s16=$['textarea16'];
     canvasClear();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成8进制
-      s10.value = cal_to_10(2,s).toString();
-
-       cal_10_to_draw(8,s10.value);
+      var ss = cal_to_10(2,s).toString();
+      cal_to_10_draw(2,s.value);
+      cal_10_to_draw(8,ss);
     }
     else if (select.options[select.selectedIndex].value == "8") {
       //null
     }
     else if (select.options[select.selectedIndex].value == "10") {
-
+      cal_10_to_draw(8,s.value);
     }
     else if (select.options[select.selectedIndex].value == "16") {
+      var ss = cal_to_10(16,s).toString();
+      cal_to_10_draw(16,s.value);
+      cal_10_to_draw(8,ss);
     }
     else {
       window.alert('Please choose the right number!!');
@@ -260,7 +266,31 @@ class HexConversion extends PolymerElement {
   }
 
   void present16(Event e, var detail, Node target) {
-
+    select = $['select'];
+    var s=$['text'];
+    var s2=$['textarea2'];
+    var s8 =$['textarea8'];
+    var s10 = $['textarea10'];
+    var s16=$['textarea16'];
+    canvasClear();
+    if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成8进制
+      var ss = cal_to_10(2,s).toString();
+      cal_to_10_draw(2,s);
+      cal_10_to_draw(16,ss);
+    }
+    else if (select.options[select.selectedIndex].value == "8") {
+      var ss = cal_to_10(8,s).toString();
+      cal_to_10_draw(8,s.value);
+      cal_10_to_draw(16,ss);
+    }
+    else if (select.options[select.selectedIndex].value == "10") {
+      cal_10_to_draw(16,s.value);
+    }
+    else if (select.options[select.selectedIndex].value == "16") {
+    }
+    else {
+      window.alert('Please choose the right number!!');
+    }
   }
 
   int cal_to_10_draw(int jz, var input) {    //将其他进制转换为10进制的图画画出来
@@ -398,5 +428,3 @@ class HexConversion extends PolymerElement {
   }
 
 }
-
-
