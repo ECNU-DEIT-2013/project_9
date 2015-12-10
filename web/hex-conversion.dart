@@ -285,6 +285,7 @@ class HexConversion extends PolymerElement {
     }
     else if (select.options[select.selectedIndex].value == "10") {
       cal_10_to_draw(16,s.value);
+      //测试
     }
     else if (select.options[select.selectedIndex].value == "16") {
     }
