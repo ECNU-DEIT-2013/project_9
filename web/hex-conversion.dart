@@ -6,6 +6,7 @@ import 'dart:html';
 import 'dart:async';
 import 'package:polymer/polymer.dart';
 import  'dart:math' as Math;
+import 'DrawTo10.dart';
 
 @CustomTag('hex-conversion')
 class HexConversion extends PolymerElement {
@@ -17,6 +18,7 @@ class HexConversion extends PolymerElement {
   SelectElement select;
   TextInputElement s;
 
+  DrawTo10 draw10;
 
   @override
   void attached() {
@@ -241,23 +243,26 @@ class HexConversion extends PolymerElement {
   void present10(Event e, var detail, Node target) {
     select = $['select'];
     var s=$['text'];
-    var s2=$['textarea2'];
-    var s8 =$['textarea8'];
-    var s10 = $['textarea10'];
-    var s16=$['textarea16'];
+
     canvasClear();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成10进制
-        cal_to_10_draw(2,s);
+      var canvas = $['canvas'];
+      draw10 = new DrawTo10(2,s,canvas);
+      draw10.hello();
 
     }
     else if (select.options[select.selectedIndex].value == "8") {
-        cal_to_10_draw(8,s);
+      var canvas = $['canvas'];
+      draw10 = new DrawTo10(8,s,canvas);
+      draw10.hello();
     }
     else if (select.options[select.selectedIndex].value == "10") {
       //null
     }
     else if (select.options[select.selectedIndex].value == "16") {
-       cal_to_10_draw(16,s);
+      var canvas = $['canvas'];
+      draw10 = new DrawTo10(16,s,canvas);
+      draw10.hello();
     }
     else {
       window.alert('Please choose the right number!!');
