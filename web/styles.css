@@ -4,30 +4,31 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 14pt;
   font-weight: normal;
-  margin: 15px;
+  margin: 5px;
 }
 
 p {
   color: #333;
 }
 .top{
-  margin-left: 10%;
-  width:80%; height:10%; border-bottom:0px solid #999999;}
-
-#two{
+  width:80%;
+  height:40px;
+  border-bottom:0px solid #999999;
   text-align: center;
   width: auto;
-  height: 5%;
-  font-size: 40px;
+  font-size: 24px;}
+#hr{
+  margin: 0px;
 }
+
 #change{
   text-align: center;
   width: auto;
-  height: 50%;
-  font-size: 40px;
+  font-size: 24px;
 }
 #custom{
   margin-left:10%;
   width: 80%;
+  height:70%;
   margin-right: 10%;
 }
