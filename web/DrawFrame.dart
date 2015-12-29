@@ -1,5 +1,6 @@
 class DrawFrame{
   List<String> numbers = new List();
+  List<String> results = new List();
   int conversion;
 
   void setConversion(int conversion){
@@ -17,4 +18,13 @@ class DrawFrame{
   List<String> getNumbers(){
     return numbers;
   }
+
+  void setResults(String singleResult){
+    results.add(singleResult);
+  }
+
+  List<String> getResults(){
+    return results;
+  }
+
 }

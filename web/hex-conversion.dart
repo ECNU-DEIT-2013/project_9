@@ -7,6 +7,8 @@ import 'dart:async';
 import 'package:polymer/polymer.dart';
 import  'dart:math' as Math;
 import 'DrawTo10.dart';
+import 'Draw2to8_16.dart';
+
 
 @CustomTag('hex-conversion')
 class HexConversion extends PolymerElement {
