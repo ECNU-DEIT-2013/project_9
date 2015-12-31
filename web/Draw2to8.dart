@@ -11,8 +11,8 @@ class Draw2to8{
   Timer timer;
 
   int number;
-  int x;
-  int y;
+  int x,x1;
+  int y,y1;
   int sum =0;
   var s;
   var canvas;
@@ -22,8 +22,9 @@ class Draw2to8{
     second=new Duration(seconds:2);
     this.s =s;
     this.canvas = canvas;
-    number =0;
+    number=0;
     x=150;y=50;
+    x1=152;y1=150;
   }
 
   void hello(){
@@ -38,6 +39,7 @@ class Draw2to8{
     var buffer = new StringBuffer();
     var bufferTra = new StringBuffer();
     var len= s.length;
+
 
     if(len%3!=0) {
       for (var i = 0;i < 3 - len % 3;i++) {
@@ -79,16 +81,29 @@ class Draw2to8{
   void cal_2_to_8_draw(Timer _){
     var content = canvas.getContext('2d');
     content.font="bold 24px Times New Roman";
-    content.fillStyle="grey";
-    content.fillText(001,x,y);
-    x=x+20;
-
-
+    content.fillStyle="white";
+    var len=drawFrame.getResults().length;
+    if(number<len) {
+      content.fillText(drawFrame.getResults().elementAt(number), x, y);
+      x = x + 72;
+      content.fillText(drawFrame.getNumbers().elementAt(number), x1, y1);
+      x1=x1+79;
+      number++;
+    }
+    else{
+      timer.cancel();
+      x=150;y=150;
+      x1=150;y1=150;
+      number =0;
+      sum =0;
+    }
 
 
   }
 
-
-
-
 }
+
+
+
+
+

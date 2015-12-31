@@ -7,7 +7,9 @@ import 'dart:async';
 import 'package:polymer/polymer.dart';
 import  'dart:math' as Math;
 import 'DrawTo10.dart';
-import 'Draw2to8_16.dart';
+import 'Draw2to8.dart';
+import 'Draw2to16.dart';
+import 'package:dialog/dialog.dart';
 
 
 @CustomTag('hex-conversion')
@@ -16,6 +18,8 @@ class HexConversion extends PolymerElement {
   HexConversion.created() : super.created();
 
   DrawTo10 draw10;
+  Draw2to8 draw2to8;
+  Draw2to16 draw2to16;
 
   ButtonElement addButton, clearButton, button2, button8, button10, button16;
   TextAreaElement s2,s8,s10,s16;
@@ -222,9 +226,9 @@ class HexConversion extends PolymerElement {
     var s16=$['textarea16'];
     canvasClear();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成8进制
-      var ss = cal_to_10(2,s).toString();
-      cal_to_10_draw(2,s.value);
-      cal_10_to_draw(8,ss);
+      var canvas = $['canvas'];
+      draw2to8 = new Draw2to8(s.value,canvas);
+      draw2to8.hello();
     }
     else if (select.options[select.selectedIndex].value == "8") {
       //null
@@ -233,9 +237,9 @@ class HexConversion extends PolymerElement {
       cal_10_to_draw(8,s.value);
     }
     else if (select.options[select.selectedIndex].value == "16") {
-      var ss = cal_to_10(16,s).toString();
-      cal_to_10_draw(16,s.value);
-      cal_10_to_draw(8,ss);
+      var canvas = $['canvas'];
+      draw2to8 = new Draw2to8(s2.value,canvas);
+      draw2to8.hello();
     }
     else {
       window.alert('Please choose the right number!!');
@@ -280,15 +284,15 @@ class HexConversion extends PolymerElement {
     var s10 = $['textarea10'];
     var s16=$['textarea16'];
     canvasClear();
-    if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成8进制
-      var ss = cal_to_10(2,s).toString();
-      cal_to_10_draw(2,s);
-      cal_10_to_draw(16,ss);
+    if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成16进制
+      var canvas = $['canvas'];
+      draw2to16 = new Draw2to16(s.value,canvas);
+      draw2to16.hello();
     }
-    else if (select.options[select.selectedIndex].value == "8") {
-      var ss = cal_to_10(8,s).toString();
-      cal_to_10_draw(8,s.value);
-      cal_10_to_draw(16,ss);
+    else if (select.options[select.selectedIndex].value == "8") {       //将8进制转换成16进制
+      var canvas = $['canvas'];
+      draw2to16 = new Draw2to16(s2.value,canvas);
+      draw2to16.hello();
     }
     else if (select.options[select.selectedIndex].value == "10") {
       cal_10_to_draw(16,s.value);
