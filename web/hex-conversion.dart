@@ -3,8 +3,8 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:html';
-import 'dart:async';
 import 'package:polymer/polymer.dart';
+import 'package:dialog/dialog.dart';
 import  'dart:math' as Math;
 import 'DrawTo10.dart';
 import 'Draw10To.dart';
@@ -59,9 +59,7 @@ class HexConversion extends PolymerElement {
     else if (select.options[select.selectedIndex].value == "16") {
       cal16();
     }
-    else {
-      window.alert('Please choose the right number!!');
-    }
+
   }
 
   void cal2() {       //将2进制转换为其他进制
@@ -70,14 +68,7 @@ class HexConversion extends PolymerElement {
     var s8 =$['textarea8'];
     var s10 = $['textarea10'];
     var  s16=$['textarea16'];
-    var judge;
-    judge= findMax(s.value);
-
-    if(judge>1){
-      alert("请输入符合条件的数字");
-
-    }
-    else{
+     findMaxT(s.value,2);
       s2.value=s.value;    //2进制自己转换
 
       s10.value = cal_to_10(2,s).toString();   //将2进制转换成10进制,这句代码是十进制转换成其他进制的前提
@@ -87,7 +78,7 @@ class HexConversion extends PolymerElement {
       cal_10_to(16,s10.value,s16);
 
 
-    }
+
 
   }
 
@@ -98,16 +89,13 @@ class HexConversion extends PolymerElement {
     var s10 = $['textarea10'];
     var s16=$['textarea16'];
 
-    var judge;
-    judge= findMax(s.value);
-    if(judge>7){
-      alert("请输入符合条件的数字");
-    }else {
+    findMaxT(s.value,8);
+
       s8.value = s.value; //将8进制转换成自己
       s10.value = cal_to_10(8, s).toString(); //将8进制转换成10进制,这句代码是十进制转换成其他进制的前提
       cal_10_to(2, s10.value, s2); //将8进制转换成2进制
       cal_10_to(16, s10.value, s16); //将8进制转换成16进制
-    }
+
   }
 
   void cal10() {   //将10进制转换为其他进制
@@ -117,11 +105,8 @@ class HexConversion extends PolymerElement {
     var s10 = $['textarea10'];
     var s16=$['textarea16'];
 
-    var judge;
-    judge= findMax(s.value);
-    if(judge>9){
-      alert("请输入符合条件的数字");
-    }else {
+      findMaxT(s.value,10);
+
       cal_10_to(2, $['text'].value, s2);
 
       cal_10_to(8, $['text'].value, s8);
@@ -129,7 +114,6 @@ class HexConversion extends PolymerElement {
       s10.value = cal_to_10(10, s).toString();
 
       cal_10_to(16, $['text'].value, s16);
-    }
 
   }
 
@@ -140,38 +124,68 @@ class HexConversion extends PolymerElement {
     var s10=$['text'];
     var s16=$['textarea16'];
 
-    var judge;
-    judge= findMax(s.value);
-    if(judge>15){
-      alert("请输入符合条件的数字");
-    }else {
-      s16.value = s.value; //将16进制转换成16进制
+     findMaxT(s.value,16);
+      s16.value = s.value;
       $['textarea10'].value = cal_to_10(16, s10).toString(); //将16进制转换成10进制
       cal_10_to(8, $['textarea10'].value, s8); //将16进制转换成8进制
       cal_10_to(2, $['textarea10'].value, s2); //将16进制转换成2进制
 
-    }
   }
 
-  int findMax(String s){
-    StringBuffer buffer =new StringBuffer();
+  void findMaxT(String s,int con) {
+    List<String> list = new List();
 
-    int max=0;
-    for (var i=0;i<s.length;i++){
-      if(int.parse(s[i])>max)
-        max=int.parse(s[i]);
+    int max = 0;
+    for (var i = 0; i < s.length; i++) {
+      list.add(s[i].toUpperCase());
+      switch (list[i]) {
+        case 'A':
+          list[i] = 10.toString();
+          break;
+        case 'B':
+          list[i] = 11.toString();
+          break;
+        case 'C':
+          list[i] = 12.toString();
+          break;
+        case 'D':
+          list[i] = 13.toString();
+          break;
+        case 'E':
+          list[i] = 14.toString();
+          break;
+        case 'F':
+          list[i] = 15.toString();
+          break;
+        case '0':
+        case'1':
+        case'2':
+        case'3':
+        case'4':
+        case'5':
+        case'6':
+        case'7':
+        case'8':
+        case'9': list[i] =list[i];
+        break;
+        default:
+          list[i]=16.toString();
+      }
     }
 
-    return max;
+    for (var i=0;i<list.length;i++){
+      if(int.parse(list[i])>max)
+        max=int.parse(list[i]);
+    }
+
+    if(max>=con){
+      alert('请输入符合条件的数字');
+    }
   }
 
   void present2(Event e, var detail, Node target) {
     select = $['select'];
     var s=$['text'];
-    var s2=$['textarea2'];
-    var s8 =$['textarea8'];
-    var s10 = $['textarea10'];
-    var s16=$['textarea16'];
     canvasClear();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成8进制
 
@@ -303,11 +317,8 @@ class HexConversion extends PolymerElement {
       draw10 = new DrawTo10(8,s,canvasTemp);
       draw10.hello();
     }
-    else if (select.options[select.selectedIndex].value == "10") {
-      //null
-    }
     else if (select.options[select.selectedIndex].value == "16") {
-      // var canvas = $['canvas'];
+
       draw10 = new DrawTo10(16,s,canvasTemp);
       draw10.hello();
     }
@@ -390,12 +401,11 @@ class HexConversion extends PolymerElement {
   }
 
   CanvasElement addTempCanvas(){
-    $['drawing'].children.clear();
+    $['right'].children.clear();
     var canvas = new CanvasElement();
     canvas..width =1000
-      ..height=445
       ..id='canvasTemp';
-    $['drawing'].children.add(canvas);
+    $['right'].children.add(canvas);
     return canvas;
   }
 
