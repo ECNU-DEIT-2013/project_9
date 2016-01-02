@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:polymer/polymer.dart';
 import  'dart:math' as Math;
 import 'DrawTo10.dart';
+import 'Draw10To.dart';
 import 'Draw2to8_16.dart';
 
 
@@ -16,6 +17,7 @@ class HexConversion extends PolymerElement {
   HexConversion.created() : super.created();
 
   DrawTo10 draw10;
+  Draw10To draw10to;
 
   ButtonElement addButton, clearButton, button2, button8, button10, button16;
   TextAreaElement s2,s8,s10,s16;
@@ -136,7 +138,9 @@ class HexConversion extends PolymerElement {
       cal_10_to_draw(2,ss);
     }
     else if (select.options[select.selectedIndex].value == "10") {
-      cal_10_to_draw(2,s.value);
+      var canvas = $['canvas'];
+      draw10to = new Draw10To(2,s,canvas);
+      draw10to.hello();
     }
     else if (select.options[select.selectedIndex].value == "16") {
       var ss = cal_to_10(16,s).toString();
@@ -230,7 +234,9 @@ class HexConversion extends PolymerElement {
       //null
     }
     else if (select.options[select.selectedIndex].value == "10") {
-      cal_10_to_draw(8,s.value);
+      var canvas = $['canvas'];
+      draw10to = new Draw10To(8,s,canvas);
+      draw10to.hello();
     }
     else if (select.options[select.selectedIndex].value == "16") {
       var ss = cal_to_10(16,s).toString();
@@ -291,7 +297,9 @@ class HexConversion extends PolymerElement {
       cal_10_to_draw(16,ss);
     }
     else if (select.options[select.selectedIndex].value == "10") {
-      cal_10_to_draw(16,s.value);
+      var canvas = $['canvas'];
+      draw10to = new Draw10To(16,s,canvas);
+      draw10to.hello();
     }
     else if (select.options[select.selectedIndex].value == "16") {
     }

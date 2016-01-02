@@ -9,63 +9,85 @@
   <template>
     <style>
 
-      .left{
-        width: 45%;
+      #left{
+        left: 0px;
+        top: 0px;
+        position: absolute;
+        margin-top: 10%;
+        margin-left:10%;
+        border-left: 45px;
+        border-top: 50px;
+        width: 440px;
+        height:500px;
+      }
+      .left_top{
+        width: 420px;
         height: 20%;
         border-style: solid;
-        border-width: 2px;
-        border-color:grey;
-        clear: right;
-        padding-top: 15px;
-        display: inline-block;
-      }
-      #left_beneath{
-        width: 48%;
-        height: 25%;
-        border-style: solid;
-        border-width: 2px;
+        border-width: 0px;
         border-color:grey;
         clear: left;
-        padding-bottom: 2%;
-        float:right;
-        padding-left: 5%;
+        padding-top: 15px;
+        border-bottom: 20px;
+        overflow: hidden;
+
+      }
+
+      #left_beneath{
+        width: 600px;
+        height: 60%;
+        border-style: solid;
+        border-width: 0px;
+        border-color:grey;
+        clear: left;
+        padding-top: 30px;
+        overflow: hidden;
       }
       .top1{
         width: auto;
-        height: 40px;
+        height: 50px;
         margin-top: 10px;
       }
-      .top2{
-        margin-left: 10px;
+      .before2{
         display: inline-block;
+        width: 35px;
+        height: 35px;
+        vertical-align:middle;
+      }
+      .top2{
+        color: #F8F8F8;
+        margin-right: 10px;
+        display: inline-block;
+        vertical-align:middle;
       }
       .top3{
+        color: #F8F8F8;
+        width: 118px;
+        height: 47px;
         display: inline-block;
-        vertical-align:top;
-        margin-right: 10%;
+        vertical-align:middle;
       }
       .top4{
         margin-left: 5%;
         display: inline-block;
-        vertical-align:top;
+        vertical-align:middle;
+
       }
       .top5{
         margin-left: 10%;
         display: inline-block;
         vertical-align:top;
         width: 60px;
+        vertical-align:middle;
+
       }
-      .top4_{
-        margin-left: 3%;
-        display: inline-block;
-        vertical-align:top;
-      }
+
 
       #button1,#button8,#button10,#button16,#select{
         color: #F8F8F8;
         width: 6em;
         height:2em;
-        background: rgba(0, 125, 185, 0.63);
+        background: rgba(7, 185, 129, 0.63);
         transition:width 2s, height 2s;
         -moz-transition:width 0.5s, height 0.5s,background 0.1s; /* Firefox 4 */
         -webkit-transition:width 0.5s, height 0.5s,background 0.1s; /* Safari and Chrome */
@@ -73,24 +95,28 @@
       }
       #button1:hover,#button8:hover,#button10:hover,#button16:hover,#select:hover{
          width: 7.5em;
-         background: #75b6e5;
+         background: #14b16e;
        }
       #button1:focus,#button8:focus,#button10:focus,#button16:focus,#select:focus{
         width: 7em;
-        background: #0084c6;
+        background: #05c694;
       }
       #select{
         color: #F8F8F8;
         width: 4em;
         height:2em;
-        background: rgba(0, 125, 185, 0.63);
+        background: rgba(8, 185, 97, 0.63);
         transition:width 2s, height 2s;
         -moz-transition:width 0.5s, height 0.5s,background 0.1s; /* Firefox 4 */
         -webkit-transition:width 0.5s, height 0.5s,background 0.1s; /* Safari and Chrome */
         -o-transition:width 0.5s, height 0.5s,background 0.1s; /* Opera */
       }
       #select:hover{
-        background: #75b6e5;
+        background: #14b16e;
+      }
+
+      #left_down{
+        padding-left: 20px;
       }
 
       .add{
@@ -98,7 +124,7 @@
         display: inline-block;
         width: 4em;
         height:2em;
-        background: rgba(0, 125, 185, 0.63);
+        background: rgba(8, 185, 97, 0.63);
         transition:width 2s, height 2s;
         -moz-transition:width 0.5s, height 0.5s,background 0.1s; /* Firefox 4 */
         -webkit-transition:width 0.5s, height 0.5s,background 0.1s; /* Safari and Chrome */
@@ -106,79 +132,132 @@
       }
       .add:hover{
         width: 4.5em;
-        background: #75b6e5;
+        background: #14b16e;
       }
       .add:focus{
         width: 4.25em;
-        background: #0084c6;
+        background: #05c694;
+      }
+
+      #right{
+        position: absolute;
+        margin-top: 10%;
+        margin-left:50%;
+        left: 0px;
+        top: 0px;
+        width: 40%;
+        height: 450px;
+        padding-left: 3%;
+
       }
       .presentation{
-        background-color: rgba(11, 72, 40, 0.74);
-        width: 100%;
-        height: 450px;;
+        width: 500px;
+        height: 450px;
         border-style: solid;
-        border-width: 2px;
+        border-width: 0px;
         border-color: #0b4828;
         overflow: auto;
-        display: inline-block;
       }
       #all{
         width:100%;
         height:100%;
       }
-      #drawing{
-        width: 1000px;
-        height: 445px;
+
+      #title{
+        padding-left: 300px;
+        width: 396px;
+        height: 94px;
       }
+      #title_{
+        position: absolute;
+        padding-left: 80px;
+        padding-top: 25px;
+        width: 213px;
+        height: 41px;
+      }
+      #title_back{
+        position: absolute;
+      }
+      textarea{
+        color:white;
+        width: 200px;
+        height: 25px;
+        font-size: 20px;
+        background-color: transparent;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        border-left-width: 0px;
+        border-bottom-width: 2px;
+        border-bottom-color: #f0f0f0;
+        text-align: center;
+      }
+
+
     </style>
 
     <div id="all">
-      <div class="presentation">
-        <div id="drawing">
-          <canvas id="canvas" width="1000px" height="445px"></canvas>
-        </div>
+
+      <div id="title">
+        <div id="title_back"><img src="pic/title-back.png"></div>
+        <div id="title_"><img src="pic/title.png"></div>
       </div>
-      <div class="left">
-        <div class="top1">
-          <div class="top2"><input type="text" id="text" maxlength="10" placeholder="输入一个数字" autofocus onfocus="style.background='#B6D2E8'" onblur="style.background='white'"/></div>
-          <div class="top2"><label>cll</label></div>
-          <div class="top2">
-            <select id="select" style="width: 70px">
-              <option selected="selected"value=2>2</option>
-              <option value=8>8</option>
-              <option value=10>10</option>
-              <option value=16>16</option>
-            </select>
+
+      <div id="left">
+        <div class="left_top">
+          <div class="top1">
+            <div class="top2"><input type="text" id="text" maxlength="10" placeholder="输入一个数字" autofocus onfocus="style.background='#B6D2E8'" onblur="style.background='white'"/></div>
+            <div class="top2"><label>进制</label></div>
+            <div class="top2">
+              <select id="select" style="width: 70px">
+                <option selected="selected"value=2>2</option>
+                <option value=8>8</option>
+                <option value=10>10</option>
+                <option value=16>16</option>
+              </select>
+            </div>
+
           </div>
-          <button class="add" on-click="{{add}}" id="add">Add</button>
-          <input class="add" type="button"  on-click="{{clear}}" id="clear" value="Clear">
-          </div>
+          <div id="left_down">
+            <button id="add" class="add" on-click="{{add}}" id="add">Add</button>
+            <input class="add" type="button"  on-click="{{clear}}" id="clear" value="Clear">
           </div>
 
-      <div id="left_beneath">
-        <div class="top1">
-          <div class="top3"><label>2</label></div>
-          <div class="top4"><textarea id="textarea2" onfocus="style.background='#B6D2E8'"  onblur="style.background='white'" readonly="readonly"></textarea></div>
-          <div class="top5"><input type="button" id="button1" on-click="{{present2}}" value="present2"></div>
-          <br>
         </div>
-        <div class="top1">
-          <div class="top3"><label>8</label></div>
-          <div class="top4"><textarea id="textarea8" onfocus="style.background='#B6D2E8'" onblur="style.background='white'" readonly="readonly"></textarea></div>
-          <div class="top5"><input type="button" id="button8" on-click="{{present8}}" value="present8"></div>
-          <br>
+        <div id="left_beneath">
+          <div class="top1">
+            <div class="before2"><img src="pic/star.png"> </div>
+            <div class="top3"><img src="pic/222.png" width="118px"height="47px" on-click="{{present2}}"> </div>
+            <div class="top4"><textarea id="textarea2"  readonly="readonly"></textarea></div>
+            <div class="top5"><input type="button" id="button1" on-click="{{present2}}" value="present2"></div>
+            <br>
+          </div>
+          <div class="top1">
+            <div class="before2"><img src="pic/star.png"> </div>
+            <div class="top3"><img src="pic/888.png" width="118px"height="47px" on-click="{{present8}}"> </div>
+            <div class="top4"><textarea id="textarea8"  readonly="readonly"></textarea></div>
+            <div class="top5"><input type="button" id="button8" on-click="{{present8}}" value="present8"></div>
+            <br>
+          </div>
+          <div class="top1">
+            <div class="before2"><img src="pic/star.png"> </div>
+            <div class="top3"><img src="pic/1010.png" width="118px"height="47px" on-click="{{present10}}"></div>
+            <div class="top4"><textarea id="textarea10"readonly="readonly"></textarea></div>
+            <div class="top5"><input type="button" id="button10" on-click="{{present10}}" value="present10"></div>
+            <br>
+          </div>
+          <div class="top1">
+            <div class="before2"><img src="pic/star.png"> </div>
+            <div class="top3"><img src="pic/1616.png" width="118px"height="47px" on-click="{{present16}}"></div>
+            <div class="top4"><textarea id="textarea16"  readonly="readonly"></textarea></div>
+            <div class="top5"><input type="button" id="button16" on-click="{{present16}}" value="present16"></div>
+            <br>
+          </div>
         </div>
-        <div class="top1_">
-          <div class="top3"><label>10</label></div>
-          <div class="top4_"><textarea id="textarea10" onfocus="style.background='#B6D2E8'" onblur="style.background='white'" readonly="readonly"></textarea></div>
-          <div class="top5"><input type="button" id="button10" on-click="{{present10}}" value="present10"></div>
-          <br>
-        </div>
-        <div class="top1_">
-          <div class="top3"><label>16</label></div>
-          <div class="top4_"><textarea id="textarea16" onfocus="style.background='#B6D2E8'" onblur="style.background='white'" readonly="readonly"></textarea></div>
-          <div class="top5"><input type="button" id="button16" on-click="{{present16}}" value="present16"></div>
-          <br>
+
+      </div>
+      <div id="right">
+        <div class="presentation">
+            <canvas id="canvas" width="450px" height="425px"></canvas>
         </div>
       </div>
 

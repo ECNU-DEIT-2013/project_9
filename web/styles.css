@@ -11,12 +11,18 @@ p {
   color: #333;
 }
 .top{
-  width:80%;
-  height:40px;
-  border-bottom:0px solid #999999;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width:1366px;
+
+  background-color: #09503c;
   text-align: center;
   width: auto;
-  font-size: 24px;}
+  font-size: 24px;
+  z-index: -10;
+}
+
 #hr{
   margin: 0px;
 }
