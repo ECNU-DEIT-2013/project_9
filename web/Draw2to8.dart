@@ -23,8 +23,8 @@ class Draw2to8{
     this.s =s;
     this.canvas = canvas;
     number=0;
-    x=100;y=200;
-    x1=110;y1=290;
+    x=150;y=50;
+    x1=152;y1=150;
   }
 
   void hello(){
@@ -85,9 +85,9 @@ class Draw2to8{
     var len=drawFrame.getResults().length;
     if(number<len) {
       content.fillText(drawFrame.getResults().elementAt(number), x, y);
-      x = x + 75;
+      x = x + 72;
       content.fillText(drawFrame.getNumbers().elementAt(number), x1, y1);
-      x1=x1+75;
+      x1=x1+79;
       number++;
     }
     else{
