@@ -6,6 +6,7 @@
 
 <polymer-element name="hex-conversion">
 
+
   <template>
     <style>
 
@@ -92,10 +93,12 @@
         -moz-transition:width 0.5s, height 0.5s,background 0.1s; /* Firefox 4 */
         -webkit-transition:width 0.5s, height 0.5s,background 0.1s; /* Safari and Chrome */
         -o-transition:width 0.5s, height 0.5s,background 0.1s; /* Opera */
+        border-radius:4px;
       }
       #button1:hover,#button8:hover,#button10:hover,#button16:hover,#select:hover{
          width: 7.5em;
          background: #14b16e;
+
        }
       #button1:focus,#button8:focus,#button10:focus,#button16:focus,#select:focus{
         width: 7em;
@@ -120,10 +123,12 @@
       }
 
       .add{
+        border-radius:4px;
         color: #F8F8F8;
         display: inline-block;
         width: 4em;
         height:2em;
+        margin-right: 30px;
         background: rgba(8, 185, 97, 0.63);
         transition:width 2s, height 2s;
         -moz-transition:width 0.5s, height 0.5s,background 0.1s; /* Firefox 4 */
@@ -139,25 +144,7 @@
         background: #05c694;
       }
 
-      #right{
-        position: absolute;
-        margin-top: 10%;
-        margin-left:50%;
-        left: 0px;
-        top: 0px;
-        width: 40%;
-        padding-left: 3%;
-        overflow: auto;
 
-      }
-      #presentation{
-        width: 500px;
-        height: 450px;
-        border-style: solid;
-        border-width: 0px;
-        border-color: #0b4828;
-        overflow: auto;
-      }
       #all{
         width:100%;
         height:100%;
@@ -190,9 +177,42 @@
         border-bottom-width: 2px;
         border-bottom-color: #f0f0f0;
         text-align: center;
+
       }
+      #scroll-1{
+        position: absolute;
+        margin-top: 10%;
+        margin-left:50%;
+        left: 0px;
+        top: 0px;
+        width: 47%;
+        height: 450px;
+        padding-left: 3%;
+        overflow: auto;
 
-
+      }
+      #scroll-1::-webkit-scrollbar {
+        width:12px;
+        height:10px;
+      }
+      #scroll-1::-webkit-scrollbar-button {
+        display: none;
+        border-bottom-width: 15px;
+      }
+      #scroll-1::-webkit-scrollbar-track     {
+        background:transparent;
+      }
+      #scroll-1::-webkit-scrollbar-track-piece {
+        background:url(http://www.lyblog.net/wp/wp-content/themes/mine/img/stripes_tiny_08.png);
+      }
+      #scroll-1::-webkit-scrollbar-thumb{
+        background:#0d9b77;
+        border-radius:4px;
+      }
+      #scroll-1::-webkit-scrollbar-thumb:hover{
+        background: #0dab88;
+        border-radius:4px;
+      }
     </style>
 
     <div id="all">
@@ -218,7 +238,7 @@
 
           </div>
           <div id="left_down">
-            <button id="add" class="add" on-click="{{add}}">Add</button>
+            <button class="add" class="add" on-click="{{add}}">Add</button>
             <input class="add" type="button"  on-click="{{clear}}" id="clear" value="Clear">
           </div>
 
@@ -228,36 +248,38 @@
             <div class="before2"><img src="pic/star.png"> </div>
             <div class="top3"><img src="pic/222.png" width="118px" height="47px" on-click="{{present2}}"> </div>
             <div class="top4"><textarea id="textarea2"  readonly="readonly"></textarea></div>
-            <div class="top5"><input type="button" id="button1" on-click="{{present2}}" value="present2"></div>
+
             <br>
           </div>
           <div class="top1">
             <div class="before2"><img src="pic/star.png"> </div>
             <div class="top3"><img src="pic/888.png" width="118px" height="47px" on-click="{{present8}}"> </div>
             <div class="top4"><textarea id="textarea8"  readonly="readonly"></textarea></div>
-            <div class="top5"><input type="button" id="button8" on-click="{{present8}}" value="present8"></div>
+
             <br>
           </div>
           <div class="top1">
             <div class="before2"><img src="pic/star.png"> </div>
             <div class="top3"><img src="pic/1010.png" width="118px" height="47px" on-click="{{present10}}"></div>
             <div class="top4"><textarea id="textarea10" readonly="readonly"></textarea></div>
-            <div class="top5"><input type="button" id="button10" on-click="{{present10}}" value="present10"></div>
+
             <br>
           </div>
           <div class="top1">
             <div class="before2"><img src="pic/star.png"> </div>
             <div class="top3"><img src="pic/1616.png" width="118px" height="47px" on-click="{{present16}}"></div>
-            <div class="top4"><textarea id="textarea16"  readonly="readonly"></textarea></div>
-            <div class="top5"><input type="button" id="button16" on-click="{{present16}}" value="present16"></div>
+            <div class="top4"><textarea id="textarea16"  readonly="readonly" ></textarea></div>
+
             <br>
           </div>
         </div>
 
       </div>
-      <div id="right">
-          <canvas id="canvas" width="450px" height="425px"></canvas>
+
+      <div id="scroll-1">
+        <canvas id="canvas" width="620px" height="1000px"></canvas>
       </div>
+
 
     </div>
 
