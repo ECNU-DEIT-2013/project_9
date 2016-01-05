@@ -2,6 +2,7 @@ library drawry1;
 import 'DrawFrame.dart';
 import 'dart:async';
 import 'dart:math' as Math;
+import 'dart:html';
 
 class Draw8to2{
   DrawFrame drawFrame;
@@ -15,13 +16,25 @@ class Draw8to2{
   var s;
   var canvas;
 
+  DivElement div;
+  DivElement bigDiv;
+  DivElement close;
 
-  Draw8to2(String s,var canvas,int x, int y) {
+  bool flag= true;
+
+
+  Draw8to2(String s,var canvas,DivElement div, DivElement bigDiv, DivElement close,int x, int y) {
     drawFrame = new DrawFrame();
     second=new Duration(seconds:2);
 
     this.s = s;
     this.canvas = canvas;
+
+    this.div= div;
+    this.bigDiv = bigDiv;
+    this.close =close;
+
+
     number = 0;
     //x = 60;
     this.x =x;
@@ -42,6 +55,7 @@ class Draw8to2{
   void hello_copy() {
     cal_10_to(s);
     timer = new Timer.periodic(second,cal_8_to_2_draw_copy);
+    img_8_to_2();
     }
 
 
@@ -171,6 +185,50 @@ class Draw8to2{
     timer.cancel();
 
     }
+  }
+
+  void img_8_to_2(){
+
+    if(flag){
+      ImageElement img = new ImageElement();
+      img.src="img/8-2-c.png";
+      img.width=200;
+      img.height=80;
+      div.children.add(img);
+
+
+      ImageElement imgBig = new ImageElement();
+      imgBig.src="img/8-2-c.png";
+      imgBig.width=500;
+      imgBig.height=200;
+
+      SpanElement span1 =new SpanElement();
+
+      span1
+        ..classes.add('title')
+        ..style.border="hidden"
+        ..text="八进制转换为二进制原理图";
+
+
+      bigDiv.children.add(span1);
+
+      bigDiv.children.add(imgBig);
+
+
+    }
+
+      flag= false;
+     div.onClick.listen(open);
+  }
+
+  void open(Event e){
+
+    close.style.display="block";
+    close.onClick.listen(shut);
+  }
+
+  void shut(Event e){
+    close.style.display="none";
   }
 
 }

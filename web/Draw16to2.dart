@@ -2,6 +2,7 @@ library drawry2;
 import 'DrawFrame.dart';
 import 'dart:async';
 import 'dart:math' as Math;
+import 'dart:html';
 
 class Draw16to2{
   DrawFrame drawFrame;
@@ -14,12 +15,22 @@ class Draw16to2{
   int sum =0;
   var s;
   var canvas;
-  Draw16to2(String s,var canvas,int x,int y) {
+
+  DivElement div;
+  DivElement bigDiv;
+  DivElement close;
+
+
+  Draw16to2(String s,var canvas,DivElement div, DivElement bigDiv, DivElement close,int x,int y) {
     drawFrame = new DrawFrame();
     second=new Duration(seconds:2);
 
     this.s = s;
     this.canvas = canvas;
+    this.div= div;
+    this.bigDiv = bigDiv;
+    this.close =close;
+
     number = 0;
    // x = 65;
     this.x =x;
@@ -39,6 +50,7 @@ class Draw16to2{
   void hello_copy(){
     cal_10_to(s);
     timer = new Timer.periodic(second,cal_16_to_2_draw_copy);
+    img_16_to_2();
   }
   void cal_10_to(String s) {
     var x = 10;
@@ -175,4 +187,47 @@ class Draw16to2{
     }
 
   }
+
+  void img_16_to_2(){
+
+
+
+      ImageElement img = new ImageElement();
+      img.src="img/16-2-c.png";
+      img.width=200;
+      img.height=80;
+      div.children.add(img);
+
+
+      ImageElement imgBig = new ImageElement();
+      imgBig.src="img/16-2-c.png";
+      imgBig.width=500;
+      imgBig.height=200;
+
+      SpanElement span1 =new SpanElement();
+
+      span1
+        ..classes.add('title')
+        ..style.border="hidden"
+        ..text="十六进制转换为二进制原理图";
+
+      bigDiv.children.add(span1);
+
+      bigDiv.children.add(imgBig);
+
+
+    div.onClick.listen(open);
+
+  }
+
+  void open(Event e){
+
+    close.style.display="block";
+    close.onClick.listen(shut);
+  }
+
+  void shut(Event e){
+    close.style.display="none";
+  }
 }
+

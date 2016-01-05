@@ -12,6 +12,7 @@ import 'Draw2to8.dart';
 import 'Draw8to2.dart';
 import 'Draw16to2.dart';
 import 'Draw2to16.dart';
+import 'Img.dart';
 
 
 
@@ -26,6 +27,7 @@ class HexConversion extends PolymerElement {
   Draw2to16 draw2to16;
   Draw8to2 draw8to2;
   Draw16to2 draw16to2;
+  Img imgIns;
 
   ButtonElement addButton, clearButton, button2, button8, button10, button16;
   TextAreaElement s2,s8,s10,s16;
@@ -191,21 +193,25 @@ class HexConversion extends PolymerElement {
   void present2(Event e, var detail, Node target) {
     select = $['select'];
     var s=$['text'];
+    DivElement smallImg=$['clickbox'] ;
+    DivElement biggerImg =$['box'];
+    DivElement close =$['close'];
     var canvasTemp =addTempCanvas();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成8进制
       alert("同一进制数不能转换成自己");
     }
     else if (select.options[select.selectedIndex].value == "8") {
-      draw8to2 = new Draw8to2(s.value,canvasTemp,150,200);
-      draw8to2.hello_copy();
+      draw8to2 = new Draw8to2(s.value,canvasTemp,smallImg, biggerImg,close,150,200);
+      draw8to2.hello_copy();    //有动画的带_copy.
     }
     else if (select.options[select.selectedIndex].value == "10") {
-      var canvas = $['canvas'];
-      draw10to = new Draw10To(2,s,canvas);
+
+      draw10to = new Draw10To(2,s,canvasTemp);
       draw10to.hello();
     }
     else if (select.options[select.selectedIndex].value == "16") {
-      draw16to2 = new Draw16to2(s.value,canvasTemp,150,200);
+
+      draw16to2 = new Draw16to2(s.value,canvasTemp,smallImg, biggerImg,close,150,200);
       draw16to2.hello_copy();
     }
 
@@ -280,9 +286,14 @@ class HexConversion extends PolymerElement {
     select = $['select'];
     var s=$['text'];
     var s2=$['textarea2'];
+    DivElement smallImg=$['clickbox'] ;
+    DivElement biggerImg =$['box'];
+    DivElement close =$['close'];
+
+    DivElement imgDiv =$['.product'];
     var canvasTemp =addTempCanvas();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换
-      draw2to8 = new Draw2to8(s.value,canvasTemp,50,180);
+      draw2to8 = new Draw2to8(s.value,canvasTemp,smallImg, biggerImg,close,50,180);
       draw2to8.hello();
     }
     else if (select.options[select.selectedIndex].value == "8") {
@@ -293,9 +304,12 @@ class HexConversion extends PolymerElement {
       draw10to.hello();
     }
     else if (select.options[select.selectedIndex].value == "16") {
-      draw16to2 = new Draw16to2(s.value,canvasTemp,65,100);
+
+      imgIns = new Img(smallImg,biggerImg,close);
+      imgIns.img_16_to_8();
+      draw16to2 = new Draw16to2(s.value,canvasTemp,null,null,null,65,100);
       draw16to2.hello();
-      draw2to8 = new Draw2to8(s2.value,canvasTemp,50,250);
+      draw2to8 = new Draw2to8(s2.value,canvasTemp,null,null,null,50,250);
       draw2to8.hello();
     }
 
@@ -328,15 +342,22 @@ class HexConversion extends PolymerElement {
     select = $['select'];
     var s=$['text'];
     var s2=$['textarea2'];
+
+    DivElement smallImg=$['clickbox'] ;
+    DivElement biggerImg =$['box'];
+    DivElement close =$['close'];
+
     var canvasTemp =addTempCanvas();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成16进制
-      draw2to16 = new Draw2to16(s.value,canvasTemp,50,180);
+      draw2to16 = new Draw2to16(s.value,canvasTemp,smallImg, biggerImg,close,50,180);
       draw2to16.hello();
     }
     else if (select.options[select.selectedIndex].value == "8") {       //将8进制转换成16进制
-      draw8to2 = new Draw8to2(s.value,canvasTemp,60,100);
+      imgIns = new Img(smallImg,biggerImg,close);
+      imgIns.img_8_to_16();
+      draw8to2 = new Draw8to2(s.value,canvasTemp,null,null,null,60,100);
       draw8to2.hello();
-      draw2to16 = new Draw2to16(s2.value,canvasTemp,50,250);
+      draw2to16 = new Draw2to16(s2.value,canvasTemp,null,null,null,50,250);
       draw2to16.hello();
     }
     else if (select.options[select.selectedIndex].value == "10") {
