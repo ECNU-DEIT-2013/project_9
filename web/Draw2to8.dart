@@ -17,14 +17,14 @@ class Draw2to8{
   var s;
   var canvas;
 
-  Draw2to8(String s,var canvas){
+  Draw2to8(String s,var canvas, int x, int y){
     drawFrame = new DrawFrame();
     second=new Duration(seconds:2);
     this.s =s;
     this.canvas = canvas;
     number=0;
-    x=150;y=50;
-    x1=152;y1=150;
+    this.x=x; this.y =y;
+    x1=x+2;y1=y+100;
   }
 
   void hello(){
@@ -89,6 +89,7 @@ class Draw2to8{
       content.fillText(drawFrame.getNumbers().elementAt(number), x1, y1);
       x1=x1+79;
       number++;
+      arrow2(100,100,100,200);
     }
     else{
       timer.cancel();
@@ -100,6 +101,45 @@ class Draw2to8{
 
 
   }
+
+  void arrow2(int x1,int y1,int x2,int y2) {
+
+    var sta = new List(2);
+    sta[0]=x1;
+    sta[1]=y1;
+
+    var end = new List(2);
+    end[0] =x2;  end[1] =y2;
+
+    // var canvas = document.getElementById(canId);
+    var ctx = canvas.getContext('2d');
+
+    ctx.beginPath();
+    ctx.moveTo(sta[0],sta[1]);
+    ctx.lineTo(end[0],end[1]);
+    ctx.fill();
+    ctx.stroke();
+    ctx.save();
+
+    ctx.translate(end[0], end[1]);
+
+    var ang = (end[0] - sta[0]) / (end[1] - sta[1]);
+    ang = Math.atan(ang);
+    if (end[1] - sta[1] >= 0) {
+      ctx.rotate(-ang);
+    } else {
+      ctx.rotate(Math.PI - ang);
+    }
+    ctx.lineTo(-5, -10);
+    ctx.lineTo(0, -5);
+    ctx.lineTo(5, -10);
+    ctx.lineTo(0, 0);
+    ctx.fill();
+    ctx.restore();
+    ctx.closePath();
+  }
+
+
 
 }
 

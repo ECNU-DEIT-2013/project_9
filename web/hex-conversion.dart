@@ -283,7 +283,7 @@ class HexConversion extends PolymerElement {
     canvasClear();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成8进制
       var canvas = $['canvas'];
-      draw2to8 = new Draw2to8(s.value,canvas);
+      draw2to8 = new Draw2to8(s.value,canvas,150,200);
       draw2to8.hello();
     }
     else if (select.options[select.selectedIndex].value == "8") {
@@ -296,7 +296,7 @@ class HexConversion extends PolymerElement {
     }
     else if (select.options[select.selectedIndex].value == "16") {
       var canvas = $['canvas'];
-      draw2to8 = new Draw2to8(s2.value,canvas);
+      draw2to8 = new Draw2to8(s2.value,canvas,150,200);
       draw2to8.hello();
     }
     else {
