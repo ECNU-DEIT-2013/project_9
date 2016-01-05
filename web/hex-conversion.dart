@@ -72,7 +72,8 @@ class HexConversion extends PolymerElement {
     var s8 =$['textarea8'];
     var s10 = $['textarea10'];
     var  s16=$['textarea16'];
-     findMaxT(s.value,2);
+      findMaxT(s.value,2);
+
       s2.value=s.value;    //2进制自己转换
 
       s10.value = cal_to_10(2,s).toString();   //将2进制转换成10进制,这句代码是十进制转换成其他进制的前提
@@ -128,7 +129,7 @@ class HexConversion extends PolymerElement {
     var s10=$['text'];
     var s16=$['textarea16'];
 
-     findMaxT(s.value,16);
+    //  findMaxT(s.value,16);
       s16.value = s.value;
       $['textarea10'].value = cal_to_10(16, s10).toString(); //将16进制转换成10进制
       cal_10_to(8, $['textarea10'].value, s8); //将16进制转换成8进制
@@ -190,14 +191,13 @@ class HexConversion extends PolymerElement {
   void present2(Event e, var detail, Node target) {
     select = $['select'];
     var s=$['text'];
-    canvasClear();
+    var canvasTemp =addTempCanvas();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成8进制
-
+      alert("同一进制数不能转换成自己");
     }
     else if (select.options[select.selectedIndex].value == "8") {
-      var ss = cal_to_10(8,s).toString();
-      //  cal_to_10_draw(8,s.value);
-      cal_10_to_draw(2,ss);
+      draw8to2 = new Draw8to2(s.value,canvasTemp,150,200);
+      draw8to2.hello_copy();
     }
     else if (select.options[select.selectedIndex].value == "10") {
       var canvas = $['canvas'];
@@ -205,13 +205,10 @@ class HexConversion extends PolymerElement {
       draw10to.hello();
     }
     else if (select.options[select.selectedIndex].value == "16") {
-      var ss = cal_to_10(16,s).toString();
-      // cal_to_10_draw(16,s.value);
-      cal_10_to_draw(2,ss);
+      draw16to2 = new Draw16to2(s.value,canvasTemp,150,200);
+      draw16to2.hello_copy();
     }
-    else {
-      window.alert('Please choose the right number!!');
-    }
+
   }
 
   int cal_to_10(int jz, var input) {
@@ -220,12 +217,12 @@ class HexConversion extends PolymerElement {
     int num10= 0,z=0,m=len-1;
     var a = new List<String>();
     for (int i = len - 1;i >= 0;i--){
-      if (s1[i] == 'A')a.add('10');
-      else if (s1[i] == 'B')a.add('11');
-      else if (s1[i] == 'C')a.add('12');
-      else if (s1[i] == 'D')a.add('13');
-      else if (s1[i] == 'E')a.add('14');
-      else if (s1[i] == 'F')a.add('15');
+      if (s1[i].toUpperCase() == 'A')a.add('10');
+      else if (s1[i].toUpperCase() == 'B')a.add('11');
+      else if (s1[i].toUpperCase() == 'C')a.add('12');
+      else if (s1[i].toUpperCase() == 'D')a.add('13');
+      else if (s1[i].toUpperCase() == 'E')a.add('14');
+      else if (s1[i].toUpperCase() == 'F')a.add('15');
       else a.add(s1[i]);
       num10++;
     }
@@ -283,30 +280,23 @@ class HexConversion extends PolymerElement {
     select = $['select'];
     var s=$['text'];
     var s2=$['textarea2'];
-
-    canvasClear();
-    if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成8进制
-      var canvas = $['canvas'];
-      draw2to8 = new Draw2to8(s.value,canvas,50,180);
+    var canvasTemp =addTempCanvas();
+    if (select.options[select.selectedIndex].value == "2") {    //将2进制转换
+      draw2to8 = new Draw2to8(s.value,canvasTemp,50,180);
       draw2to8.hello();
     }
     else if (select.options[select.selectedIndex].value == "8") {
-      //null
+      alert("同一进制数不能转换成自己");
     }
     else if (select.options[select.selectedIndex].value == "10") {
-      var canvas = $['canvas'];
-      draw10to = new Draw10To(8,s,canvas);
+      draw10to = new Draw10To(8,s,canvasTemp);
       draw10to.hello();
     }
     else if (select.options[select.selectedIndex].value == "16") {
-      var canvas = $['canvas'];
-      draw16to2 = new Draw16to2(s.value,canvas);
+      draw16to2 = new Draw16to2(s.value,canvasTemp,65,100);
       draw16to2.hello();
-      draw2to8 = new Draw2to8(s2.value,canvas,50,250);
+      draw2to8 = new Draw2to8(s2.value,canvasTemp,50,250);
       draw2to8.hello();
-    }
-    else {
-      window.alert('Please choose the right number!!');
     }
 
   }
@@ -338,32 +328,25 @@ class HexConversion extends PolymerElement {
     select = $['select'];
     var s=$['text'];
     var s2=$['textarea2'];
-    var s8 =$['textarea8'];
-    var s10 = $['textarea10'];
-    var s16=$['textarea16'];
-    canvasClear();
+    var canvasTemp =addTempCanvas();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成16进制
-      var canvas = $['canvas'];
-      draw2to16 = new Draw2to16(s.value,canvas,50,180);
+      draw2to16 = new Draw2to16(s.value,canvasTemp,50,180);
       draw2to16.hello();
     }
     else if (select.options[select.selectedIndex].value == "8") {       //将8进制转换成16进制
-      var canvas = $['canvas'];
-      draw8to2 = new Draw8to2(s.value,canvas);
+      draw8to2 = new Draw8to2(s.value,canvasTemp,60,100);
       draw8to2.hello();
-      draw2to16 = new Draw2to16(s2.value,canvas,50,250);
+      draw2to16 = new Draw2to16(s2.value,canvasTemp,50,250);
       draw2to16.hello();
     }
     else if (select.options[select.selectedIndex].value == "10") {
-      var canvas = $['canvas'];
-      draw10to = new Draw10To(16,s,canvas);
+      draw10to = new Draw10To(16,s,canvasTemp);
       draw10to.hello();
     }
     else if (select.options[select.selectedIndex].value == "16") {
+      alert("同一进制数不能转换成自己");
     }
-    else {
-      window.alert('Please choose the right number!!');
-    }
+
   }
 
   void cal_10_to_draw(int jz,String input)     //将10进制转化为其他进制的图画画出来
@@ -409,11 +392,12 @@ class HexConversion extends PolymerElement {
   }
 
   CanvasElement addTempCanvas(){
-    $['right'].children.clear();
+    $['scroll-1'].children.clear();
     var canvas = new CanvasElement();
     canvas..width =1000
+      ..height=1000
       ..id='canvasTemp';
-    $['right'].children.add(canvas);
+    $['scroll-1'].children.add(canvas);
     return canvas;
   }
 

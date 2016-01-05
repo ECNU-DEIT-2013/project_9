@@ -44,12 +44,12 @@ class DrawTo10{
     List<String> bufferList = new List();
     var a = new List<String>();
     for (int i = len - 1;i >= 0;i--){
-      if (s1[i] == 'A')a.add('10');
-      else if (s1[i] == 'B')a.add('11');
-      else if (s1[i] == 'C')a.add('12');
-      else if (s1[i] == 'D')a.add('13');
-      else if (s1[i] == 'E')a.add('14');
-      else if (s1[i] == 'F')a.add('15');
+      if (s1[i].toUpperCase() == 'A')a.add('10');
+      else if (s1[i].toUpperCase() == 'B')a.add('11');
+      else if (s1[i].toUpperCase() == 'C')a.add('12');
+      else if (s1[i].toUpperCase() == 'D')a.add('13');
+      else if (s1[i].toUpperCase() == 'E')a.add('14');
+      else if (s1[i].toUpperCase() == 'F')a.add('15');
       else a.add(s1[i]);
       num10++;
     }
@@ -76,10 +76,7 @@ class DrawTo10{
     content.font="bold 24px Times New Roman";
     content.fillStyle="grey";
     var length =drawFrame.getNumbers().length;
-    var width;
-    //img.src="num.png";
 
-    // content.drawImage(img,100,100,111,157);
     if(number<length){
       if(number==0){
         var temp=150;//number是整个数组中的第几个成员

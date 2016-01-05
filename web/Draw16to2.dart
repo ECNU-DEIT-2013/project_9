@@ -14,25 +14,32 @@ class Draw16to2{
   int sum =0;
   var s;
   var canvas;
-  Draw16to2(String s,var canvas) {
+  Draw16to2(String s,var canvas,int x,int y) {
     drawFrame = new DrawFrame();
-    //second=new Duration(seconds:2);
+    second=new Duration(seconds:2);
 
     this.s = s;
     this.canvas = canvas;
     number = 0;
-    x = 65;
-    y = 100;
-    x1 = 50;
-    y1 = 150;
+   // x = 65;
+    this.x =x;
+   // y = 100;
+    this.y =y;
+    //x1 = 50;
+    x1=x-15;
+   // y1 = 150;
+    y1=y+50;
   }
 
   void hello(){
     cal_10_to(s);
-    //timer = new Timer.periodic(second,cal_16_to_2_draw);
     cal_16_to_2_draw();
   }
 
+  void hello_copy(){
+    cal_10_to(s);
+    timer = new Timer.periodic(second,cal_16_to_2_draw_copy);
+  }
   void cal_10_to(String s) {
     var x = 10;
     var y = 32;
@@ -43,12 +50,12 @@ class Draw16to2{
       drawFrame.setFormer(s[i]);
     }
     for (int i = 0;i < len;i++) {
-      if (s[i] == 'A')a.add('10');
-      else if (s[i] == 'B')a.add('11');
-      else if (s[i] == 'C')a.add('12');
-      else if (s[i] == 'D')a.add('13');
-      else if (s[i] == 'E')a.add('14');
-      else if (s[i] == 'F')a.add('15');
+      if (s[i].toUpperCase() == 'A')a.add('10');
+      else if (s[i].toUpperCase() == 'B')a.add('11');
+      else if (s[i].toUpperCase() == 'C')a.add('12');
+      else if (s[i].toUpperCase() == 'D')a.add('13');
+      else if (s[i].toUpperCase() == 'E')a.add('14');
+      else if (s[i].toUpperCase() == 'F')a.add('15');
       else a.add(s[i]);
     }
 
@@ -151,4 +158,21 @@ class Draw16to2{
     sum =0;
   }
 
+  void cal_16_to_2_draw_copy(Timer _){
+    var content = canvas.getContext('2d');
+    content.font="bold 24px Times New Roman";
+    content.fillStyle="white";
+    var len=drawFrame.getResults().length;
+    if(number<len) {
+      content.fillText(drawFrame.getFormer().elementAt(number),x, y);
+      x = x + 75;
+      content.fillText(drawFrame.getResults().elementAt(number), x1, y1);
+      x1=x1+75;
+      number++;
+    }
+    else{
+      timer.cancel();
+    }
+
+  }
 }

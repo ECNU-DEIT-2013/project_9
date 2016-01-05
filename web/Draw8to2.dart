@@ -16,17 +16,21 @@ class Draw8to2{
   var canvas;
 
 
-  Draw8to2(String s,var canvas) {
+  Draw8to2(String s,var canvas,int x, int y) {
     drawFrame = new DrawFrame();
-    //second=new Duration(seconds:2);
+    second=new Duration(seconds:2);
 
     this.s = s;
     this.canvas = canvas;
     number = 0;
-    x = 60;
-    y = 100;
-    x1 = 50;
-    y1 = 150;
+    //x = 60;
+    this.x =x;
+    this.y=y;
+   // y = 100;
+    x1=x-10;
+    y1=y+50;
+   // x1 = 50;
+   // y1 = 150;
   }
 
   void hello() {
@@ -35,6 +39,11 @@ class Draw8to2{
     cal_8_to_2_draw();
 
   }
+  void hello_copy() {
+    cal_10_to(s);
+    timer = new Timer.periodic(second,cal_8_to_2_draw_copy);
+    }
+
 
   void cal_10_to(String s) {
     var x = 10;
@@ -136,15 +145,32 @@ class Draw8to2{
       x = x + 80;
       content.fillText(drawFrame.getResults().elementAt(number), x1, y1);
       x1=x1+80;
-      //number++;
     }
-    //else{
-    //timer.cancel();
+
     x=150;y=150;
     x1=150;y1=150;
     number =100;
     sum =0;
     //}
+  }
+
+  void cal_8_to_2_draw_copy(Timer _) {
+    var content = canvas.getContext('2d');
+    content.font="bold 24px Times New Roman";
+    content.fillStyle="white";
+    var len=drawFrame.getResults().length;
+    if(number<len){
+      content.fillText(drawFrame.getFormer().elementAt(number),x, y);
+      x = x + 80;
+      content.fillText(drawFrame.getResults().elementAt(number), x1, y1);
+      x1=x1+80;
+      number++;
+
+    }
+    else{
+    timer.cancel();
+
+    }
   }
 
 }

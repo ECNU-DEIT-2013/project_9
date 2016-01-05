@@ -1,0 +1,27 @@
+.product { width:320px; height:150px; margin:0 auto; padding:10px; }
+
+.features li { font:normal 12px/16px arial, sans-serif; color:#555; }
+a.clickbox, a.clickbox:visited, a.clickbox:hover { text-decoration:none; text-align:center; }
+a.clickbox img { display:block; border:0; }
+a.clickbox b { display:block; }
+a.clickbox em { font:bold 10px/12px arial, sans-serif; color:#000; }
+a.clickbox { float:left; margin:0 15px 15px 0; display:inline; }
+a.clickbox .lightbox { position:absolute; left:-9999px; top:-10000px; cursor:default; z-index:500; }
+a.clickbox .light { position:absolute; left:0; top:0; width:100%; }
+a.clickbox .box { position:absolute; left:0; width:100%; text-align:center; height:300px; top:30%; margin-top:-150px; }
+
+a.clickbox:active { direction:ltr; }
+a.clickbox:active .lightbox { left:0; top:0; width:100%; height:100%; }
+a.clickbox .lightbox:hover, a.clickbox:focus .lightbox { position:fixed; left:0; top:0; width:100%; height:100%; }
+a.clickbox .lightbox:hover .light, a.clickbox:active .lightbox .light, a.clickbox:focus .lightbox .light { background:#fff; width:100%; height:100%; filter: alpha(opacity=90);  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    opacity:0.90; }
+a.clickbox .lightbox:hover .box img, a.clickbox:active .lightbox .box img, a.clickbox:focus .lightbox .box img { border:1px solid #ddd; margin:0 auto; padding:30px; background:#fff; }
+a.clickbox .lightbox:hover .box span, a.clickbox:active .lightbox .box span, a.clickbox:focus .lightbox .box span { display:block; width:560px; padding:0; margin:10px auto; text-align:center; text-decoration:none; background:#fff; border:1px solid #ddd; }
+a.clickbox .lightbox .box span.title { font:normal 22px/26px verdana, sans-serif; color:#069; }
+a.clickbox .lightbox .box span.text { font:normal 11px/16px verdana, sans-serif; color:#333; }
+.clear { clear:left; }
+a.clickbox i { display:block; width:32px; height:32px; position:fixed; right:-100px; top:0; z-index:500; }
+a.clickbox .lightbox:hover i, a.clickbox:active i, a.clickbox:focus i { right:50%; top:30%; background:url(close2.png); margin-right:-295px; margin-top:-165px; }
+#close { display:block; position:fixed; width:32px; height:32px; right:50%; top:30%; margin-right:-295px; margin-top:-165px; z-index:1000; background:url(trans.gif); cursor:pointer; }
+
+
