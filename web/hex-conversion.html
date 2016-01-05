@@ -18,35 +18,30 @@
         margin-left:10%;
         border-left: 45px;
         border-top: 50px;
-        width: 440px;
-        height:500px;
+        width: 60%;
+        height:80%;
       }
       .left_top{
-        width: 420px;
-        height: 20%;
+        width: 100%;
+        height: 30%;
         border-style: solid;
         border-width: 0px;
         border-color:grey;
         clear: left;
         padding-top: 15px;
-        border-bottom: 20px;
         overflow: hidden;
-
       }
 
       #left_beneath{
-        width: 600px;
+        width: 100%;
         height: 60%;
-        border-style: solid;
         border-width: 0px;
-        border-color:grey;
         clear: left;
-        padding-top: 30px;
         overflow: hidden;
       }
       .top1{
         width: auto;
-        height: 50px;
+        height: 20%;
         margin-top: 10px;
       }
       .before2{
@@ -61,6 +56,34 @@
         display: inline-block;
         vertical-align:middle;
       }
+      #textarea8,#textarea10,#textarea16{
+        padding-top: 5%;
+        display: inline-block;
+        color:white;
+        width: auto;
+        height: 25px;
+        font-size: 20px;
+        background-color: transparent;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        border-left-width: 0px;
+        border-bottom-width: 2px;
+        border-bottom-color: #f0f0f0;
+        text-align: center;
+      }
+      #textarea2{
+        display: inline-block;
+        width: auto;
+        font-size: 20px;
+        color:white;
+        background-color: transparent;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        border-left-width: 0px;
+        border-bottom-width: 2px;
+        border-bottom-color: #f0f0f0;
+        text-align: center;
+      }
       .top3{
         color: #F8F8F8;
         width: 118px;
@@ -69,25 +92,18 @@
         vertical-align:middle;
       }
       .top4{
+        padding-bottom: 5%;
         margin-left: 5%;
         display: inline-block;
         vertical-align:middle;
-
+        height: 25%;
       }
-      .top5{
-        margin-left: 10%;
-        display: inline-block;
-        vertical-align:top;
-        width: 60px;
-        vertical-align:middle;
-
-      }
-
-
-      #button1,#button8,#button10,#button16,#select{
+      #select{
+        border-width: 0px;
+        font-size: 18px;
         color: #F8F8F8;
         width: 6em;
-        height:2em;
+        height:1em;
         background: rgba(7, 185, 129, 0.63);
         transition:width 2s, height 2s;
         -moz-transition:width 0.5s, height 0.5s,background 0.1s; /* Firefox 4 */
@@ -95,13 +111,10 @@
         -o-transition:width 0.5s, height 0.5s,background 0.1s; /* Opera */
         border-radius:4px;
       }
-      #button1:hover,#button8:hover,#button10:hover,#button16:hover,#select:hover{
-         width: 7.5em;
+      #select:hover{
          background: #14b16e;
-
        }
-      #button1:focus,#button8:focus,#button10:focus,#button16:focus,#select:focus{
-        width: 7em;
+      #select:focus{
         background: #05c694;
       }
       #select{
@@ -119,15 +132,21 @@
       }
 
       #left_down{
-        padding-left: 20px;
+        padding-top: 5%;
+        padding-left:5%;
       }
-
+      button{
+        height: 20px;
+      }
       .add{
+        border-width: 0px;
         border-radius:4px;
         color: #F8F8F8;
         display: inline-block;
-        width: 4em;
-        height:2em;
+        width:15%;
+        height: 20%;
+        font-size: 16px;
+        margin-left: 30px;
         margin-right: 30px;
         background: rgba(8, 185, 97, 0.63);
         transition:width 2s, height 2s;
@@ -135,50 +154,34 @@
         -webkit-transition:width 0.5s, height 0.5s,background 0.1s; /* Safari and Chrome */
         -o-transition:width 0.5s, height 0.5s,background 0.1s; /* Opera */
       }
+
       .add:hover{
-        width: 4.5em;
+        width:17%;
         background: #14b16e;
       }
       .add:focus{
-        width: 4.25em;
+        width: 16%;
         background: #05c694;
       }
-
-
       #all{
         width:100%;
         height:100%;
       }
 
       #title{
-        padding-left: 300px;
-        width: 396px;
-        height: 94px;
+        padding-left: 30%;
+        width: 20%;
+        height: 10%;
       }
       #title_{
         position: absolute;
-        padding-left: 80px;
-        padding-top: 25px;
-        width: 213px;
-        height: 41px;
+        padding-left:6%;
+        padding-top: 2%;
       }
       #title_back{
         position: absolute;
       }
-      textarea{
-        color:white;
-        width: 200px;
-        height: 25px;
-        font-size: 20px;
-        background-color: transparent;
-        border-top-width: 0px;
-        border-right-width: 0px;
-        border-left-width: 0px;
-        border-bottom-width: 2px;
-        border-bottom-color: #f0f0f0;
-        text-align: center;
 
-      }
       #scroll-1{
         position: absolute;
         margin-top: 10%;
@@ -186,7 +189,7 @@
         left: 0px;
         top: 0px;
         width: 47%;
-        height: 450px;
+        height: 79%;
         padding-left: 3%;
         overflow: auto;
 
@@ -213,20 +216,48 @@
         background: #0dab88;
         border-radius:4px;
       }
+      #scroll-1::-webkit-scrollbar-corner {
+        background:transparent;
+      }
+      #text{
+        border-radius:4px;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        border-left-width: 0px;
+        border-bottom-width: 2px;
+        background-color: transparent;
+        border-color: white;
+        text-align: center;
+        font-size: 18px;
+        color: white;
+      }
+
+      #222{
+        width:118px;
+        height:47px;
+        transition:width 2s, height 2s;/* 过渡效果暂时还没用 4 */
+        -moz-transition:width 0.5s, height 0.5s,background 0.1s; /* Firefox 4 */
+        -webkit-transition:width 0.5s, height 0.5s,background 0.1s; /* Safari and Chrome */
+        -o-transition:width 0.5s, height 0.5s,background 0.1s; /* Opera */
+      }
+      #222:hover{
+        width:150px;
+        height:47px;
+      }
     </style>
 
     <div id="all">
 
       <div id="title">
-        <div id="title_back"><img src="pic/title-back.png"></div>
-        <div id="title_"><img src="pic/title.png"></div>
+        <div id="title_back"><img src="pic/title-back.png" width="100%" height="100%"></div>
+        <div id="title_"><img src="pic/title.png" width="100%" height="100%"></div>
       </div>
 
       <div id="left">
         <div class="left_top">
           <div class="top1">
-            <div class="top2"><input type="text" id="text" maxlength="10" placeholder="输入一个数字" autofocus onfocus="style.background='#B6D2E8'" onblur="style.background='white'"/></div>
-            <div class="top2"><label>进制</label></div>
+            <div class="top2"><input type="text" id="text" maxlength="10" autofocus placeholder="输入一个数字" background-color="blue" /></div>
+            <div class="top2"><label>选择进制</label></div>
             <div class="top2">
               <select id="select" style="width: 70px">
                 <option selected="selected" value=2>2</option>
@@ -238,8 +269,8 @@
 
           </div>
           <div id="left_down">
-            <button class="add" class="add" on-click="{{add}}">Add</button>
-            <input class="add" type="button"  on-click="{{clear}}" id="clear" value="Clear">
+            <button class="add"  on-click="{{add}}">开始转换</button>
+            <button class="add"  on-click="{{clear}}" id="clear" value="Clear">清空选择</button>
           </div>
 
         </div>
@@ -253,7 +284,7 @@
           </div>
           <div class="top1">
             <div class="before2"><img src="pic/star.png"> </div>
-            <div class="top3"><img src="pic/888.png" width="118px" height="47px" on-click="{{present8}}"> </div>
+            <div class="top3"><img id="222" src="pic/888.png"  on-click="{{present8}}"> </div>
             <div class="top4"><textarea id="textarea8"  readonly="readonly"></textarea></div>
 
             <br>
@@ -277,7 +308,7 @@
       </div>
 
       <div id="scroll-1">
-        <canvas id="canvas" width="620px" height="1000px"></canvas>
+        <canvas id="canvas" width="1620px" height="2000px"></canvas>
       </div>
 
 

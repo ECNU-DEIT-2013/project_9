@@ -26,7 +26,7 @@ class Draw10To{
     this.s =s;
     this.canvas = canvas;
     number =0;
-    x=50;y=50;
+    x=15;y=50;
 
   }
 
@@ -45,7 +45,27 @@ class Draw10To{
     while(a!=0){
       b=a%jz;
       c=a~/jz;
-      b1.add(b.toString());//b1数组存放余数,以String形式
+      if(b<10){
+        b1.add(b.toString());//b1数组存放余数,以String形式
+      }
+      else if(b==10){
+        b1.add('A');
+      }
+      else if(b==11){
+        b1.add('B');
+      }
+      else if(b==12){
+        b1.add('C');
+      }
+      else if(b==13){
+        b1.add('D');
+      }
+      else if(b==14){
+        b1.add('E');
+      }
+      else{
+        b1.add('F');
+      }
       c1.add(c.toString());//c1数组存放商
       a=c;
     }
@@ -65,9 +85,14 @@ class Draw10To{
     var content = canvas.getContext('2d');
     content.font="bold 24px Times New Roman";
     content.fillStyle="pink";
+    content.strokeStyle ="#EFF08F";
     var length =drawFrame.getNumbers().length;
     if(number<length){
-      content.fillText('$conversion',x-15,y);
+      if(conversion<16){
+        content.fillText('$conversion',x-15,y);
+      }else{
+        content.fillText('$conversion',x-30,y);
+      }
       content.fillStyle="white";
       content.fillText('${drawFrame2.getNumbers().elementAt(number)}',x+length*5,y);
       content.fillText('${drawFrame.getNumbers().elementAt(number)}',length*20+140,y);
@@ -83,7 +108,7 @@ class Draw10To{
       content.fillText('${drawFrame2.getNumbers().elementAt(number)}',x+length*5-20,y);
       content.fillStyle="yellow";
       content.fillText('所以($old_number)',x-length*20,y+40);
-      x=x+15*old_number.length+60-length*20;
+      x=x+15*old_number.length+55-length*20;
       content.font="bold 16px Times New Roman";
       content.fillText('10',x,y+40);
       x=x+20;
@@ -102,7 +127,7 @@ class Draw10To{
     }else
     {
       timer.cancel();
-      x=50;y=50;
+      x=15;y=50;
       number =0;
       sum =0;
     }
