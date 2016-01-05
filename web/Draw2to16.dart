@@ -11,20 +11,21 @@ class Draw2to16{
   Timer timer;
 
   int number;
-  int x,x1;
-  int y,y1;
+  int x,x1,x2,x3;
+  int y,y1,y2,y3;
   int sum =0;
   var s;
   var canvas;
 
-  Draw2to16(String s,var canvas){
+  Draw2to16(String s,var canvas,int x,int y){
     drawFrame = new DrawFrame();
     second=new Duration(seconds:2);
     this.s =s;
     this.canvas = canvas;
+    this.x=x; this.y =y;
     number =0;
-    x=150;y=50;
-    x1=154;y1=150;
+    x1=x+15;y1=y+90;
+    x2=x+20;x3=x+20;y2=y+5;y3=y+70;
   }
 
   void hello(){
@@ -88,9 +89,11 @@ class Draw2to16{
     var len=drawFrame.getResults().length;
     if(number<len) {
       content.fillText(drawFrame.getResults().elementAt(number), x, y);
-      x = x + 72;
+      x = x + 80;
       content.fillText(drawFrame.getNumbers().elementAt(number), x1, y1);
-      x1=x1+79;
+      x1=x1+80;
+      arrow2(x2,y2,x3,y3);
+      x2=x2+80;x3=x3+80;
       number++;
     }
     else{
@@ -101,8 +104,46 @@ class Draw2to16{
       sum =0;
     }
 
-
   }
+
+
+  void arrow2(int x1,int y1,int x2,int y2) {
+
+    var sta = new List(2);
+    sta[0]=x1;
+    sta[1]=y1;
+
+    var end = new List(2);
+    end[0] =x2;  end[1] =y2;
+
+    // var canvas = document.getElementById(canId);
+    var ctx = canvas.getContext('2d');
+
+    ctx.beginPath();
+    ctx.moveTo(sta[0],sta[1]);
+    ctx.lineTo(end[0],end[1]);
+    ctx.fill();
+    ctx.stroke();
+    ctx.save();
+
+    ctx.translate(end[0], end[1]);
+
+    var ang = (end[0] - sta[0]) / (end[1] - sta[1]);
+    ang = Math.atan(ang);
+    if (end[1] - sta[1] >= 0) {
+      ctx.rotate(-ang);
+    } else {
+      ctx.rotate(Math.PI - ang);
+    }
+    ctx.lineTo(-5, -10);
+    ctx.lineTo(0, -5);
+    ctx.lineTo(5, -10);
+    ctx.lineTo(0, 0);
+    ctx.fill();
+    ctx.restore();
+    ctx.closePath();
+  }
+
 
 
 

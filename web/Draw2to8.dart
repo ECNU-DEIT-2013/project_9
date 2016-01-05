@@ -11,8 +11,8 @@ class Draw2to8{
   Timer timer;
 
   int number;
-  int x,x1;
-  int y,y1;
+  int x,x1,x2,x3;
+  int y,y1,y2,y3;
   int sum =0;
   var s;
   var canvas;
@@ -24,7 +24,8 @@ class Draw2to8{
     this.canvas = canvas;
     number=0;
     this.x=x; this.y =y;
-    x1=x+2;y1=y+100;
+    x1=x+10;y1=y+90;
+    x2=x+15;x3=x+15;y2=y+5;y3=y+70;
   }
 
   void hello(){
@@ -85,11 +86,12 @@ class Draw2to8{
     var len=drawFrame.getResults().length;
     if(number<len) {
       content.fillText(drawFrame.getResults().elementAt(number), x, y);
-      x = x + 72;
+      x = x + 80;
       content.fillText(drawFrame.getNumbers().elementAt(number), x1, y1);
-      x1=x1+79;
+      x1=x1+80;
+      arrow2(x2,y2,x3,y3);
+      x2=x2+80;x3=x3+80;
       number++;
-      arrow2(100,100,100,200);
     }
     else{
       timer.cancel();
@@ -98,9 +100,8 @@ class Draw2to8{
       number =0;
       sum =0;
     }
-
-
   }
+
 
   void arrow2(int x1,int y1,int x2,int y2) {
 

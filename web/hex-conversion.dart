@@ -9,6 +9,8 @@ import  'dart:math' as Math;
 import 'DrawTo10.dart';
 import 'Draw10To.dart';
 import 'Draw2to8.dart';
+import 'Draw8to2.dart';
+import 'Draw16to2.dart';
 import 'Draw2to16.dart';
 
 
@@ -22,6 +24,8 @@ class HexConversion extends PolymerElement {
   Draw10To draw10to;
   Draw2to8 draw2to8;
   Draw2to16 draw2to16;
+  Draw8to2 draw8to2;
+  Draw16to2 draw16to2;
 
   ButtonElement addButton, clearButton, button2, button8, button10, button16;
   TextAreaElement s2,s8,s10,s16;
@@ -283,7 +287,7 @@ class HexConversion extends PolymerElement {
     canvasClear();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成8进制
       var canvas = $['canvas'];
-      draw2to8 = new Draw2to8(s.value,canvas,150,200);
+      draw2to8 = new Draw2to8(s.value,canvas,50,180);
       draw2to8.hello();
     }
     else if (select.options[select.selectedIndex].value == "8") {
@@ -296,7 +300,9 @@ class HexConversion extends PolymerElement {
     }
     else if (select.options[select.selectedIndex].value == "16") {
       var canvas = $['canvas'];
-      draw2to8 = new Draw2to8(s2.value,canvas,150,200);
+      draw16to2 = new Draw16to2(s.value,canvas);
+      draw16to2.hello();
+      draw2to8 = new Draw2to8(s2.value,canvas,50,250);
       draw2to8.hello();
     }
     else {
@@ -338,12 +344,14 @@ class HexConversion extends PolymerElement {
     canvasClear();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成16进制
       var canvas = $['canvas'];
-      draw2to16 = new Draw2to16(s.value,canvas);
+      draw2to16 = new Draw2to16(s.value,canvas,50,180);
       draw2to16.hello();
     }
     else if (select.options[select.selectedIndex].value == "8") {       //将8进制转换成16进制
       var canvas = $['canvas'];
-      draw2to16 = new Draw2to16(s2.value,canvas);
+      draw8to2 = new Draw8to2(s.value,canvas);
+      draw8to2.hello();
+      draw2to16 = new Draw2to16(s2.value,canvas,50,250);
       draw2to16.hello();
     }
     else if (select.options[select.selectedIndex].value == "10") {
