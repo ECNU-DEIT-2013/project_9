@@ -19,15 +19,6 @@ class Img{
 
   void img_16_to_8(){
 
-   if(div.hasChildNodes()){
-     var childList = div.childNodes;
-      for(var i=0;i<childList.length;i++){
-       if( childList[i].nodeName=="IMG"){
-         var nodeObject = div.children[i];
-         div.children.remove(nodeObject);
-       }
-      }
-   }
 
     ImageElement img = new ImageElement();
     img.src="img/16-8-c.png";
