@@ -28,7 +28,7 @@ class DrawTo10{
     this.s =s;
     this.canvas = canvas;
     number =0;
-    x=150;y=50;
+    x=200;y=100;
 
   }
 
@@ -84,23 +84,23 @@ class DrawTo10{
 
         for(var j=0;j<length;j++){
           if(j==number){
-            content.fillStyle="blue";
+            content.fillStyle="yellow";
             content.fillText('${drawFrame.getNumbers().elementAt(j)}',temp-100,y);
             temp=temp+15;
           }
           else{
-            content.fillStyle="grey";
+            content.fillStyle="white";
             content.fillText('${drawFrame.getNumbers().elementAt(j)}',temp-100,y);
             temp=temp+15;
           }
         }
         x=temp;
 
-        content.fillStyle="blue";
+        content.fillStyle="yellow";
         content.fillText('${drawFrame.getNumbers().elementAt(number)}',x,y);
-        content.fillStyle="grey";
+        content.fillStyle="white";
         content.fillText('×',x+15*2,y);
-        content.fillStyle="pink";
+        content.fillStyle="orange";
         content.fillText('${drawFrame.getConversion()}'+'^'+'${length-1-number}',x+15*4,y);
         y=y+50;
         number++;
@@ -111,12 +111,12 @@ class DrawTo10{
 
           for(var j=0;j<length;j++){
             if(j==number){
-              content.fillStyle="blue";
+              content.fillStyle="yellow";
               content.fillText('${drawFrame.getNumbers().elementAt(j)}',temp-100,y);
               temp=temp+15;
             }
             else{
-              content.fillStyle="grey";
+              content.fillStyle="white";
               content.fillText('${drawFrame.getNumbers().elementAt(j)}',temp-100,y);
               temp=temp+15;
             }
@@ -126,11 +126,11 @@ class DrawTo10{
           content.fillText('+',x-15*2,y);
 
           sum=sum+int.parse(drawFrame.getNumbers().elementAt(number))*Math.pow(drawFrame.getConversion(),length-1-number);
-          content.fillStyle="blue";
+          content.fillStyle="yellow";
           content.fillText('${drawFrame.getNumbers().elementAt(number)}',x,y);
-          content.fillStyle="grey";
+          content.fillStyle="white";
           content.fillText('×',x+15*2,y);
-          content.fillStyle="pink";
+          content.fillStyle="orange";
           content.fillText('${drawFrame.getConversion()}'+'^'+'${length-1-number}',x+15*4,y);
           y=y+50;
           number++;
@@ -141,30 +141,30 @@ class DrawTo10{
 
           for(var j=0;j<length;j++){
             if(j==number){
-              content.fillStyle="blue";
+              content.fillStyle="yellow";
               content.fillText('${drawFrame.getNumbers().elementAt(j)}',temp-100,y);
               temp=temp+15;
             }
             else{
-              content.fillStyle="grey";
+              content.fillStyle="white";
               content.fillText('${drawFrame.getNumbers().elementAt(j)}',temp-100,y);
               temp=temp+15;
             }
           }
           x=temp;
 
-          content.fillStyle="grey";
+          content.fillStyle="white";
           content.fillText('+',x-15*2,y);
-          content.fillStyle="blue";
+          content.fillStyle="yellow";
           sum=sum+int.parse(drawFrame.getNumbers().elementAt(number))*Math.pow(drawFrame.getConversion(),length-1-number);
           content.fillText('${drawFrame.getNumbers().elementAt(number)}',x,y);
-          content.fillStyle="grey";
+          content.fillStyle="white";
           content.fillText('×',x+15*2,y);
-          content.fillStyle="pink";
+          content.fillStyle="orange";
           content.fillText('${drawFrame.getConversion()}'+'^'+'${length-1-number}',x+15*4,y);
-          content.fillStyle="grey";
-          content.fillText('——————',x-15*2,y+25);
           content.fillStyle="black";
+          content.fillText('——————',x-15*2,y+25);
+          content.fillStyle="white";
           content.fillText('${sum}',x+60,y+50);
           number++;
         }

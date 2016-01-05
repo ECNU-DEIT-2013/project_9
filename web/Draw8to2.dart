@@ -20,7 +20,6 @@ class Draw8to2{
   DivElement bigDiv;
   DivElement close;
 
-  bool flag= true;
 
 
   Draw8to2(String s,var canvas,DivElement div, DivElement bigDiv, DivElement close,int x, int y) {
@@ -189,7 +188,11 @@ class Draw8to2{
 
   void img_8_to_2(){
 
-    if(flag){
+    if(div.childNodes.length>3){
+      div.lastChild.remove();
+    }
+    bigDiv.children.clear();
+
       ImageElement img = new ImageElement();
       img.src="img/8-2-c.png";
       img.width=200;
@@ -214,10 +217,6 @@ class Draw8to2{
 
       bigDiv.children.add(imgBig);
 
-
-    }
-
-      flag= false;
      div.onClick.listen(open);
   }
 

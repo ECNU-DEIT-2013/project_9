@@ -158,6 +158,10 @@ class Draw2to16{
 
   void img_2_to_16(){
 
+    if(div.childNodes.length>3){
+      div.lastChild.remove();
+    }
+    bigDiv.children.clear();
 
       ImageElement img = new ImageElement();
       img.src="img/2-16-c.png";

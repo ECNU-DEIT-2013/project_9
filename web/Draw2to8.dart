@@ -154,6 +154,11 @@ class Draw2to8{
 
   void img_2_to_8(){
 
+    if(div.childNodes.length>3){
+      div.lastChild.remove();
+    }
+
+    bigDiv.children.clear();
 
     ImageElement img = new ImageElement();
     img.src="img/2-8-c.png";
