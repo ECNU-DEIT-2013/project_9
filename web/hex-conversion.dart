@@ -13,6 +13,7 @@ import 'Draw8to2.dart';
 import 'Draw16to2.dart';
 import 'Draw2to16.dart';
 import 'Img.dart';
+import 'Star.dart';
 
 
 
@@ -28,6 +29,7 @@ class HexConversion extends PolymerElement {
   Draw8to2 draw8to2;
   Draw16to2 draw16to2;
   Img imgIns;
+  Star star;
 
   ButtonElement addButton, clearButton, button2, button8, button10, button16;
   TextAreaElement s2,s8,s10,s16;
@@ -209,6 +211,8 @@ bool findMaxT(String s,int con) {
     DivElement biggerImg =$['box'];
     DivElement close =$['close'];
     var canvasTemp =addTempCanvas();
+
+    drawLittleStar(2);
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成8进制
       alert("同一进制数不能转换成自己");
     }
@@ -301,8 +305,8 @@ bool findMaxT(String s,int con) {
     DivElement smallImg=$['clickbox'] ;
     DivElement biggerImg =$['box'];
     DivElement close =$['close'];
+    drawLittleStar(8);
 
-    DivElement imgDiv =$['.product'];
     var canvasTemp =addTempCanvas();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换
       draw2to8 = new Draw2to8(s.value,canvasTemp,smallImg, biggerImg,close,10,180);
@@ -331,6 +335,7 @@ bool findMaxT(String s,int con) {
     select = $['select'];
     var s=$['text'];
     DivElement smallImg=$['clickbox'] ;
+    drawLittleStar(10);
 
     if(smallImg.childNodes.length>3){
       smallImg.lastChild.remove();
@@ -363,6 +368,7 @@ bool findMaxT(String s,int con) {
     DivElement smallImg=$['clickbox'] ;
     DivElement biggerImg =$['box'];
     DivElement close =$['close'];
+    drawLittleStar(16);
 
     var canvasTemp =addTempCanvas();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成16进制
@@ -385,6 +391,16 @@ bool findMaxT(String s,int con) {
       alert("同一进制数不能转换成自己");
     }
 
+  }
+
+  void drawLittleStar(int con){
+    DivElement con10 = $['con10'];
+    DivElement con8 = $['con8'];
+    DivElement con2 = $['con2'];
+    DivElement con16 = $['con16'];
+
+    star = new Star(con,con2,con8,con10,con16);
+    star.drawLittleStar();
   }
 
   void cal_10_to_draw(int jz,String input)     //将10进制转化为其他进制的图画画出来
