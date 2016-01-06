@@ -58,10 +58,17 @@ class HexConversion extends PolymerElement {
 
     select = $['select'];
     var s=$['text'];
+    
     div1=$['left_top'];
     div2=$['left_beneath'];
-
+    DivElement smallImg=$['clickbox'] ;
     var judge;
+
+    if(smallImg.childNodes.length>3){
+      smallImg.lastChild.remove();
+    }
+
+
     if (select.options[select.selectedIndex].value == "2") {
       judge=findMaxT(s.value,2);
 
@@ -136,6 +143,11 @@ class HexConversion extends PolymerElement {
     $['textarea16'].value = "";
     drawLittleStar(0);
     addTempCanvas();
+    DivElement smallImg=$['clickbox'] ;
+
+    if(smallImg.childNodes.length>3){
+      smallImg.lastChild.remove();
+    }
   }
 
   void cal2() {       //将2进制转换为其他进制
