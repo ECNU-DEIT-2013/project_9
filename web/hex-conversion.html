@@ -170,7 +170,7 @@
 
       #left_down{
         padding-top: 5%;
-        padding-left:5%;
+
       }
       button{
         height: 20px;
@@ -181,10 +181,9 @@
         color: #F8F8F8;
         display: inline-block;
         width:15%;
-        height: 25%;
         font-size: 18px;
-        margin-left: 2.5%;
         margin-right: 2.5%;
+        vertical-align:bottom;
         background: rgba(8, 185, 97, 0.63);
         transition:width 2s, height 2s;
         -moz-transition:width 0.5s, height 0.5s,background 0.1s; /* Firefox 4 */
@@ -355,8 +354,10 @@
 
           </div>
           <div id="left_down">
-            <button class="add"  on-click="{{add}}">开始转换</button>
-            <button class="add"  on-click="{{clear}}" id="clear" value="Clear">清除内容</button>
+            <img src="pic/fb.png" height="35px" width="35px">
+            <button  class="add" style="height:35px " on-click="{{add}}">开始转换</button>
+            <img src="pic/fbc.png"  height="35px" width="35px">
+            <button class="add" style="height:35px " on-click="{{clear}}" id="clear" value="Clear">清除内容</button>
           </div>
 
         </div>
