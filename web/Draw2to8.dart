@@ -95,6 +95,7 @@ class Draw2to8{
     var content = canvas.getContext('2d');
     content.font="bold 24px Times New Roman";
     content.fillStyle="white";
+    content.strokeStyle ="#EFF08F";
     var len=drawFrame.getResults().length;
     if(number<len) {
       content.fillText(drawFrame.getResults().elementAt(number), x, y);
