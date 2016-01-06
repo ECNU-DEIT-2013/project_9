@@ -213,7 +213,7 @@ bool findMaxT(String s,int con) {
       alert("同一进制数不能转换成自己");
     }
     else if (select.options[select.selectedIndex].value == "8") {
-      draw8to2 = new Draw8to2(s.value,canvasTemp,smallImg, biggerImg,close,150,200);
+      draw8to2 = new Draw8to2(s.value,canvasTemp,smallImg, biggerImg,close,10,180);
       draw8to2.hello_copy();    //有动画的带_copy.
     }
     else if (select.options[select.selectedIndex].value == "10") {
@@ -223,7 +223,7 @@ bool findMaxT(String s,int con) {
     }
     else if (select.options[select.selectedIndex].value == "16") {
 
-      draw16to2 = new Draw16to2(s.value,canvasTemp,smallImg, biggerImg,close,150,200);
+      draw16to2 = new Draw16to2(s.value,canvasTemp,smallImg, biggerImg,close,10,180);
       draw16to2.hello_copy();
     }
 
@@ -305,7 +305,7 @@ bool findMaxT(String s,int con) {
     DivElement imgDiv =$['.product'];
     var canvasTemp =addTempCanvas();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换
-      draw2to8 = new Draw2to8(s.value,canvasTemp,smallImg, biggerImg,close,50,180);
+      draw2to8 = new Draw2to8(s.value,canvasTemp,smallImg, biggerImg,close,10,180);
       draw2to8.hello();
     }
     else if (select.options[select.selectedIndex].value == "8") {
@@ -319,9 +319,9 @@ bool findMaxT(String s,int con) {
 
       imgIns = new Img(smallImg,biggerImg,close);
       imgIns.img_16_to_8();
-      draw16to2 = new Draw16to2(s.value,canvasTemp,null,null,null,65,100);
+      draw16to2 = new Draw16to2(s.value,canvasTemp,null,null,null,15,100);
       draw16to2.hello();
-      draw2to8 = new Draw2to8(s2.value,canvasTemp,null,null,null,50,250);
+      draw2to8 = new Draw2to8(s2.value,canvasTemp,null,null,null,10,250);
       draw2to8.hello();
     }
 
@@ -366,15 +366,15 @@ bool findMaxT(String s,int con) {
 
     var canvasTemp =addTempCanvas();
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成16进制
-      draw2to16 = new Draw2to16(s.value,canvasTemp,smallImg, biggerImg,close,50,180);
+      draw2to16 = new Draw2to16(s.value,canvasTemp,smallImg, biggerImg,close,10,180);
       draw2to16.hello();
     }
     else if (select.options[select.selectedIndex].value == "8") {       //将8进制转换成16进制
       imgIns = new Img(smallImg,biggerImg,close);
       imgIns.img_8_to_16();
-      draw8to2 = new Draw8to2(s.value,canvasTemp,null,null,null,60,100);
+      draw8to2 = new Draw8to2(s.value,canvasTemp,null,null,null,20,100);
       draw8to2.hello();
-      draw2to16 = new Draw2to16(s2.value,canvasTemp,null,null,null,50,250);
+      draw2to16 = new Draw2to16(s2.value,canvasTemp,null,null,null,10,250);
       draw2to16.hello();
     }
     else if (select.options[select.selectedIndex].value == "10") {
