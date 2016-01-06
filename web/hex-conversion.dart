@@ -35,7 +35,7 @@ class HexConversion extends PolymerElement {
   TextAreaElement s2,s8,s10,s16;
   SelectElement select;
   TextInputElement s;
-  DivElement div1,div2;
+  DivElement div1;
 
 
   @override
@@ -72,6 +72,8 @@ class HexConversion extends PolymerElement {
     }
     div1=$['left_top'];
     div1.style.display="none";
+    div1=$['scroll-1'];
+    div1.style.display="block";
     div1=$['left_beneath'];
     div1.style.display="block";
 
@@ -81,11 +83,14 @@ class HexConversion extends PolymerElement {
     $['text'].value = "";
     select = $['select'];
     addTempCanvas();
+
   }
 
   void rereturn(Event e, var detail, Node target){
     div1=$['left_top'];
     div1.style.display="block";
+    div1=$['scroll-1'];
+    div1.style.display="none";
     div1=$['left_beneath'];
     div1.style.display="none";
     $['text'].value = "";
@@ -114,7 +119,10 @@ class HexConversion extends PolymerElement {
      cal_10_to(16,s10.value,s16);
    }
     else
-        alert("请输入符合进制的数字！");
+   {
+     alert("请输入符合进制的数字！");
+     rereturn();
+   }
 
   }
 
@@ -133,7 +141,11 @@ class HexConversion extends PolymerElement {
       cal_10_to(16, s10.value, s16); //将8进制转换成16进制
     }
     else
+    {
       alert("请输入符合进制的数字！");
+      rereturn();
+    }
+
   }
 
   void cal10() {   //将10进制转换为其他进制
@@ -154,7 +166,10 @@ class HexConversion extends PolymerElement {
      cal_10_to(16, $['text'].value, s16);
 
    }else
+   {
      alert("请输入符合进制的数字！");
+     rereturn();
+   }
 
   }
 
@@ -172,7 +187,10 @@ class HexConversion extends PolymerElement {
       cal_10_to(8, $['textarea10'].value, s8); //将16进制转换成8进制
       cal_10_to(2, $['textarea10'].value, s2); //将16进制转换成2进制
     }else
+    {
       alert("请输入符合进制的数字！");
+      rereturn();
+    }
 
 
   }

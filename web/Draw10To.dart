@@ -26,7 +26,7 @@ class Draw10To{
     this.s =s;
     this.canvas = canvas;
     number =0;
-    x=15;y=50;
+    x=30;y=50;
 
   }
 
