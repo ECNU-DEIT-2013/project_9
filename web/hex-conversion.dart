@@ -35,6 +35,7 @@ class HexConversion extends PolymerElement {
   TextAreaElement s2,s8,s10,s16;
   SelectElement select;
   TextInputElement s;
+  DivElement div1,div2;
 
 
   @override
@@ -54,9 +55,11 @@ class HexConversion extends PolymerElement {
   }
 
   void add(Event e, var detail, Node target) {
+
     select = $['select'];
     if (select.options[select.selectedIndex].value == "2") {
       cal2();
+
     }
     else if (select.options[select.selectedIndex].value == "8") {
       cal8();
@@ -67,7 +70,30 @@ class HexConversion extends PolymerElement {
     else if (select.options[select.selectedIndex].value == "16") {
       cal16();
     }
+    div1=$['left_top'];
+    div1.style.display="none";
+    div1=$['left_beneath'];
+    div1.style.display="block";
 
+
+  }
+  void clear(Event e, var detail, Node target) {
+    $['text'].value = "";
+    select = $['select'];
+    addTempCanvas();
+  }
+
+  void rereturn(Event e, var detail, Node target){
+    div1=$['left_top'];
+    div1.style.display="block";
+    div1=$['left_beneath'];
+    div1.style.display="none";
+    $['text'].value = "";
+    $['textarea2'].value = "";
+    $['textarea8'].value = "";
+    $['textarea10'].value = "";
+    $['textarea16'].value = "";
+    addTempCanvas();
   }
 
   void cal2() {       //将2进制转换为其他进制
@@ -153,7 +179,6 @@ class HexConversion extends PolymerElement {
 
 bool findMaxT(String s,int con) {
     List<String> list = new List();
-
     int max = 0;
     for (var i = 0; i < s.length; i++) {
       list.add(s[i].toUpperCase());
@@ -213,6 +238,7 @@ bool findMaxT(String s,int con) {
     var canvasTemp =addTempCanvas();
 
     drawLittleStar(2);
+
     if (select.options[select.selectedIndex].value == "2") {    //将2进制转换成8进制
       alert("同一进制数不能转换成自己");
     }
@@ -355,7 +381,7 @@ bool findMaxT(String s,int con) {
       draw10.hello();
     }
     else {
-      window.alert('Please choose the right number!!');
+      alert("同一进制数不能转换成自己");
     }
 
   }
@@ -484,14 +510,7 @@ bool findMaxT(String s,int con) {
     content.fillText('$n',130+x/2,43+y);
   }
 
-  void clear(Event e, var detail, Node target) {
-    $['text'].value = "";
-    $['textarea2'].value = "";
-    $['textarea8'].value = "";
-    $['textarea10'].value = "";
-    $['textarea16'].value = "";
-    addTempCanvas();
-  }
+
 
 
 

@@ -51,23 +51,29 @@
         width: 60%;
         height:80%;
       }
-      .left_top{
+
+      #left_top{
         width: 100%;
         height: 30%;
+        margin-top: 15%;
+
         border-style: solid;
         border-width: 0px;
         border-color:grey;
         clear: left;
         padding-top: 15px;
         overflow: hidden;
+
       }
 
       #left_beneath{
         width: 100%;
-        height: 60%;
+        height: 70%;
+        margin-top: 10%;
         border-width: 0px;
         clear: left;
         overflow: hidden;
+        display: none;
       }
       .top1{
         width: auto;
@@ -89,8 +95,8 @@
       #textarea8,#textarea10,#textarea16{
         padding-top: 5%;
         display: inline-block;
-        color:white;
         width: auto;
+        color:white;
         height: 25px;
         font-size: 20px;
         background-color: transparent;
@@ -103,9 +109,9 @@
       }
       #textarea2{
         display: inline-block;
+        color:white;
         width: auto;
         font-size: 20px;
-        color:white;
         background-color: transparent;
         border-top-width: 0px;
         border-right-width: 0px;
@@ -127,6 +133,7 @@
         display: inline-block;
         vertical-align:middle;
         height: 25%;
+
       }
       #select{
         border-width: 0px;
@@ -193,6 +200,32 @@
         width: 16%;
         background: #05c694;
       }
+      .add2{
+        border-width: 0px;
+        border-radius:4px;
+        color: #F8F8F8;
+        display: inline-block;
+        width:15%;
+        height: 8%;
+        font-size: 16px;
+        margin-left: 20%;
+        background: rgba(8, 185, 97, 0.63);
+        transition:width 2s, height 2s;
+        -moz-transition:width 0.5s, height 0.5s,background 0.1s; /* Firefox 4 */
+        -webkit-transition:width 0.5s, height 0.5s,background 0.1s; /* Safari and Chrome */
+        -o-transition:width 0.5s, height 0.5s,background 0.1s; /* Opera */
+      }
+
+      .add2:hover{
+        width:17%;
+        background: #14b16e;
+      }
+      .add2:focus{
+        width: 16%;
+        background: #05c694;
+      }
+
+
       #all{
         width:100%;
         height:100%;
@@ -305,7 +338,7 @@
       <div align="center"> </div>
 
       <div id="left">
-        <div class="left_top">
+        <div id="left_top">
           <div class="top1">
             <div class="top2"><input type="text" id="text" maxlength="10" autofocus placeholder="输入一个数字" background-color="blue" /></div>
             <div class="top2"><label>选择进制</label></div>
@@ -321,7 +354,7 @@
           </div>
           <div id="left_down">
             <button class="add"  on-click="{{add}}">开始转换</button>
-            <button class="add"  on-click="{{clear}}" id="clear" value="Clear">清空选择</button>
+            <button class="add"  on-click="{{clear}}" id="clear" value="Clear">清除内容</button>
           </div>
 
         </div>
@@ -354,6 +387,7 @@
 
             <br>
           </div>
+          <button class="add2"  on-click="{{rereturn}}" id="return" value="return">返回</button>
         </div>
 
       </div>
