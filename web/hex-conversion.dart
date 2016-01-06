@@ -35,7 +35,7 @@ class HexConversion extends PolymerElement {
   TextAreaElement s2,s8,s10,s16;
   SelectElement select;
   TextInputElement s;
-  DivElement div1,div2;
+  DivElement div1,div2,div3;
 
 
   @override
@@ -58,8 +58,10 @@ class HexConversion extends PolymerElement {
 
     select = $['select'];
     var s=$['text'];
-    
+
     div1=$['left_top'];
+    div3=$['scroll-1'];
+    div3.style.display="block";
     div2=$['left_beneath'];
     DivElement smallImg=$['clickbox'] ;
     var judge;
@@ -136,6 +138,8 @@ class HexConversion extends PolymerElement {
     div1.style.display="block";
     div1=$['left_beneath'];
     div1.style.display="none";
+    div3=$['scroll-1'];
+    div3.style.display="none";
     $['text'].value = "";
     $['textarea2'].value = "";
     $['textarea8'].value = "";
