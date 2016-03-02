@@ -3,6 +3,8 @@ description: A sample application
 dependencies:
   polymer: '>=0.15.1 <0.17.0'
   dialog: any
+  sqljocky: "^0.14.1"
+  messenger: "^0.0.7"
 transformers:
 - polymer:
     entry_points: web/index.html

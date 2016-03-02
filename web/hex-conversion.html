@@ -313,6 +313,13 @@
         width:150px;
         height:47px;
       }
+      #exercise_block{
+        width: 1120px;
+        height: 450px;
+        display: none;
+        background-color: #05c694;
+      }
+      ul.none {list-style-type:none;}
     </style>
 
     <div id="all">
@@ -355,10 +362,18 @@
             <img src="pic/fb.png" height="35px" width="35px">
             <button  class="add" style="height:35px " on-click="{{add}}">开始转换</button>
             <img src="pic/fbc.png"  height="35px" width="35px">
-            <button class="add" style="height:35px " on-click="{{clear}}" id="clear" value="Clear">清除内容</button>
+            <button class="add" style="height:35px " on-click="{{opentest}}" id="clear" value="Clear">习题练习</button>
           </div>
 
         </div>
+        <div>
+          <div id="exercise_block">
+            <ul id="liList"></ul>
+            <button  class="add" style="height:35px " on-click="{{makeRequest}}">题目1</button>
+            <ul id="wordList" class="none"></ul>
+          </div>
+        </div>
+
         <div id="left_beneath">
           <div class="top1">
             <div class="before2" id="con2"></div>

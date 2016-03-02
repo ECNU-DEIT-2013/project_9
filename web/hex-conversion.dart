@@ -6,6 +6,7 @@ import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:dialog/dialog.dart';
 import  'dart:math' as Math;
+import 'dart:async';
 import 'DrawTo10.dart';
 import 'Draw10To.dart';
 import 'Draw2to8.dart';
@@ -30,6 +31,7 @@ class HexConversion extends PolymerElement {
   Draw16to2 draw16to2;
   Img imgIns;
   Star star;
+
 
   ButtonElement addButton, clearButton, button2, button8, button10, button16;
   TextAreaElement s2,s8,s10,s16;
@@ -153,6 +155,37 @@ class HexConversion extends PolymerElement {
       smallImg.lastChild.remove();
     }
   }
+  void opentest(Event e, var detail, Node target){//习题功能
+    div1=$['left_top'];
+    div1.style.display="none";
+    div2=$['exercise_block'];
+    div2.style.display="block";
+
+  }
+
+  Future makeRequest(Event e) async {
+    var path = 'https://www.dartlang.org/f/portmanteaux.json';
+    //var path = 'http://127.0.0.1:8080';
+    try {
+      processString(await HttpRequest.getString(path));
+    } catch (e) {
+      print('Couldn\'t open $path');
+      handleError(e);
+    }
+  }
+
+  processString(String jsonString) {
+    LIElement wordList = $['wordList'];
+    List<String> portmanteaux = JSON.decode(jsonString);
+    for (int i = 0; i < portmanteaux.length; i++) {
+      wordList.children.add(new LIElement()..text = portmanteaux[i]);
+    }
+  }
+  handleError(Object error) {
+    LIElement wordList = $['wordList'];
+    wordList.children.add(new LIElement()..text = 'Request failed.');
+  }
+
 
   void cal2() {       //将2进制转换为其他进制
     var s=$['text'];
