@@ -317,9 +317,21 @@
         width: 1120px;
         height: 450px;
         display: none;
-        background-color: #05c694;
+        background-color: #0e693f;
       }
-      ul.none {list-style-type:none;}
+      ul.none {
+        color: aliceblue;
+        list-style-type:none;
+      }
+         #radio{
+           display: none;
+         }
+         .radio{
+           float: left;
+         }
+         #check{
+           display: none;
+         }
     </style>
 
     <div id="all">
@@ -370,7 +382,15 @@
           <div id="exercise_block">
             <ul id="liList"></ul>
             <button  class="add" style="height:35px " on-click="{{makeRequest}}">题目1</button>
+            <button  class="add" style="height:35px " on-click="{{rereturn}}">返回</button>
             <ul id="wordList" class="none"></ul>
+            <form id="radio" name="input">
+              <div><input class="radio" type="radio" name="opt" value="1" id="opt1" /><ul id="rad1" class="none"/></div>
+              <div><input class="radio" type="radio" name="opt" value="2" /><ul id="rad2" class="none"/></div>
+              <div><input class="radio" type="radio" name="opt" value="3" /><ul id="rad3" class="none"/></div>
+              <div><input class="radio" type="radio" name="opt" value="4" /><ul id="rad4" class="none"/></div>
+            </form>
+            <button  class="add" id="check" style="height:35px " on-click="{{check}}">提交</button>
           </div>
         </div>
 

@@ -15,15 +15,7 @@ main() async {
     addCorsHeaders(res);
     res
       ..headers.contentType = new ContentType("application", "json", charset: "utf-8")
-      ..write('''["$question",''');
-
-    int j;
-    for(j=0;j<information.length;j++)
-    {
-      if(j<information.length-1){res.write('"${information[j]}",');}
-      else{res.write('"${information[j]}"');}
-    }
-    res.write(']');
+      ..write(information);
     res.close();
   }
 
@@ -39,10 +31,10 @@ void addCorsHeaders(HttpResponse res) {
 }
 connectDB() async{
   var pool = new ConnectionPool(host: 'localhost', port: 3306, user: 'root', password: '1234', db: 'stu_10130340101', max: 8);
-  var results = await pool.query('select * from exercise;');
+  var results = await pool.query('select * from exercise where id=1;');
   results.forEach((row) {
     print(' opt1: ${row[3]},opt2: ${row[4]},opt3: ${row[5]},opt4:${row[6]},rightopt_id:${row[2]}');
-    information.add(' opt1: ${row[3]},opt2: ${row[4]},opt3: ${row[5]},opt4:${row[6]},rightopt_id:${row[2]}');
+    information.add('"${row[1]}","  ${row[3]}"," ${row[4]}","${row[5]}","${row[6]}","${row[2]}"');
     question='${row[1]}';
   });
 }

@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:html';
+import 'dart:convert';
 import 'package:polymer/polymer.dart';
 import 'package:dialog/dialog.dart';
 import  'dart:math' as Math;
@@ -38,6 +39,7 @@ class HexConversion extends PolymerElement {
   SelectElement select;
   TextInputElement s;
   DivElement div1,div2,div3;
+  String rightopt_id;//习题部分正确的题号
 
 
   @override
@@ -138,6 +140,8 @@ class HexConversion extends PolymerElement {
   void rereturn(Event e, var detail, Node target){
     div1=$['left_top'];
     div1.style.display="block";
+    div2=$['exercise_block'];
+    div2.style.display="none";
     div1=$['left_beneath'];
     div1.style.display="none";
     div3=$['scroll-1'];
@@ -164,8 +168,12 @@ class HexConversion extends PolymerElement {
   }
 
   Future makeRequest(Event e) async {
-    var path = 'https://www.dartlang.org/f/portmanteaux.json';
-    //var path = 'http://127.0.0.1:8080';
+    //var path = 'https://www.dartlang.org/f/portmanteaux.json';
+    div1=$['radio'];
+    div1.style.display="block";
+    div2=$['check'];
+    div2.style.display="block";
+    var path = 'http://127.0.0.1:8080';
     try {
       processString(await HttpRequest.getString(path));
     } catch (e) {
@@ -175,10 +183,15 @@ class HexConversion extends PolymerElement {
   }
 
   processString(String jsonString) {
-    LIElement wordList = $['wordList'];
     List<String> portmanteaux = JSON.decode(jsonString);
-    for (int i = 0; i < portmanteaux.length; i++) {
-      wordList.children.add(new LIElement()..text = portmanteaux[i]);
+    LIElement wordList = $['wordList'];
+    FormElement radiolist=$['radio'];
+    wordList.children.add(new LIElement()..text = portmanteaux[0]);
+    rightopt_id=portmanteaux[portmanteaux.length-1];
+    for (int i = 1; i < portmanteaux.length-1; i++) {
+      String radname='rad'+i.toString();
+      LIElement rad1=$[radname];
+      rad1.children.add(new LIElement()..text=portmanteaux[i]);
     }
   }
   handleError(Object error) {
@@ -187,6 +200,18 @@ class HexConversion extends PolymerElement {
   }
 
 
+  void check(Event e, var detail, Node target){
+    String radname='opt'+rightopt_id;
+    InputElement rad=$[radname];
+    if(rad.checked){
+      LIElement wordList = $['wordList'];
+      wordList.children.add(new LIElement()..text = '正确');
+    }
+    else{
+      LIElement wordList = $['wordList'];
+      wordList.children.add(new LIElement()..text = '错误');
+    }
+  }
   void cal2() {       //将2进制转换为其他进制
     var s=$['text'];
     var s2=$['textarea2'];
