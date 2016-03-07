@@ -149,6 +149,10 @@ class HexConversion extends PolymerElement {
     div1.style.display="none";
     div3=$['scroll-1'];
     div3.style.display="none";
+    div3=$['QaA'];
+    div3.style.display="none";
+    div3=$['exe_area'];
+    div3.style.display="block";
     $['text'].value = "";
     $['textarea2'].value = "";
     $['textarea8'].value = "";
@@ -167,7 +171,6 @@ class HexConversion extends PolymerElement {
     div1.style.display="none";
     div2=$['exercise_block'];
     div2.style.display="block";
-
   }
 
   Future makeRequest(Event e) async {
@@ -176,6 +179,10 @@ class HexConversion extends PolymerElement {
     div1.style.display="block";
     div2=$['check'];
     div2.style.display="block";
+    div3=$['QaA'];
+    div3.style.display="block";
+    div3=$['exe_area'];
+    div3.style.display="none";
     var path = 'http://127.0.0.1:8080/first';
     que_num=2;
     try {
@@ -211,11 +218,14 @@ class HexConversion extends PolymerElement {
     InputElement rad=$[radname];
     if(rad.checked){
       LIElement wordList = $['wordList'];
-      wordList.children.add(new LIElement()..text = '正确');
+      wordList.children.add(
+          new LIElement()..style.color="#88f875"
+            ..text = '正确');
     }
     else{
       LIElement wordList = $['wordList'];
-      wordList.children.add(new LIElement()..text = '错误');
+      wordList.children.add(new LIElement()..style.color="#ff3916"
+        ..text = '错误');
     }
   }
 

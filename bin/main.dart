@@ -37,7 +37,7 @@ next_exe(HttpRequest request) async{
   } catch (e) {
     print('Error:$e');
   }
-  var pool = new ConnectionPool(host: 'localhost', port: 3306, user: 'root', password: '1234', db: 'stu_10130340101', max: 8);
+  var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340101_2', max: 8);
   var results = await pool.query('select * from exercise where id='+name+';');
   results.forEach((row) {
     reinformation.clear();
@@ -79,7 +79,7 @@ void addCorsHeaders(HttpResponse res) {
 }
 
 connectDB() async{
-    var pool = new ConnectionPool(host: 'localhost', port: 3306, user: 'root', password: '1234', db: 'stu_10130340101', max: 8);
+    var pool = new ConnectionPool(host: '52.193.39.90', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340101_2', max: 8);
     var results = await pool.query('select * from exercise where id=1;');
     results.forEach((row) {
       information.clear();

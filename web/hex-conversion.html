@@ -314,10 +314,11 @@
         height:47px;
       }
       #exercise_block{
-        width: 1120px;
+        width: 920px;
         height: 450px;
         display: none;
-        background-color: #0e693f;
+        margin-left: 100px;
+        margin-right: 100px;
       }
       ul.none {
         color: aliceblue;
@@ -330,6 +331,16 @@
            float: left;
          }
          #check{
+           display: none;
+           float: left;
+         }
+         #exe_area{
+           padding-left: 300px;
+           padding-top: 100px;
+         }
+         #QaA{
+           padding-left: 250px;
+           padding-top: 100px;
            display: none;
          }
     </style>
@@ -380,18 +391,22 @@
         </div>
         <div>
           <div id="exercise_block">
-            <ul id="liList"></ul>
-            <button  class="add" style="height:35px " on-click="{{makeRequest}}">开始答题</button>
-            <button  class="add" style="height:35px " on-click="{{rereturn}}">返回</button>
-            <ul id="wordList" class="none"></ul>
-            <form id="radio" name="input">
-              <div><input class="radio" type="radio" name="opt" value="1" id="opt1" /><ul id="rad1" class="none"/></div>
-              <div><input class="radio" type="radio" name="opt" value="2" id="opt2"/><ul id="rad2" class="none"/></div>
-              <div><input class="radio" type="radio" name="opt" value="3" id="opt3"/><ul id="rad3" class="none"/></div>
-              <div><input class="radio" type="radio" name="opt" value="4" id="opt4"/><ul id="rad4" class="none"/></div>
-            </form>
-            <button  class="add" id="check" style="height:35px " on-click="{{check}}">提交</button>
-            <button  class="add" id="next" style="height:35px " on-click="{{next}}">下一题</button>
+            <div id="exe_area">
+              <button  class="add" style="height:35px " on-click="{{makeRequest}}">开始答题</button>
+              <button  class="add" style="height:35px " on-click="{{rereturn}}">返回</button>
+            </div>
+            <div id="QaA">
+              <ul id="wordList" class="none"></ul>
+              <form id="radio" name="input">
+                <div><input class="radio" type="radio" name="opt" value="1" id="opt1" /><ul id="rad1" class="none"/></div>
+                <div><input class="radio" type="radio" name="opt" value="2" id="opt2"/><ul id="rad2" class="none"/></div>
+                <div><input class="radio" type="radio" name="opt" value="3" id="opt3"/><ul id="rad3" class="none"/></div>
+                <div><input class="radio" type="radio" name="opt" value="4" id="opt4"/><ul id="rad4" class="none"/></div>
+              </form>
+              <button  class="add" id="check" style="height:35px " on-click="{{check}}">提交</button>
+              <button  class="add" id="next" style="height:35px " on-click="{{next}}">下一题</button>
+              <button  class="add" style="height:35px " on-click="{{rereturn}}">返回</button>
+            </div>
           </div>
         </div>
 
