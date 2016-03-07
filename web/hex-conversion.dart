@@ -34,12 +34,15 @@ class HexConversion extends PolymerElement {
   Star star;
 
 
+
   ButtonElement addButton, clearButton, button2, button8, button10, button16;
   TextAreaElement s2,s8,s10,s16;
   SelectElement select;
   TextInputElement s;
   DivElement div1,div2,div3;
-  String rightopt_id;//习题部分正确的题号
+  String rightopt_id;//习题部分正确的选项号
+  var que_num=2;//习题部分题号
+  HttpRequest request;
 
 
   @override
@@ -173,7 +176,8 @@ class HexConversion extends PolymerElement {
     div1.style.display="block";
     div2=$['check'];
     div2.style.display="block";
-    var path = 'http://127.0.0.1:8080';
+    var path = 'http://127.0.0.1:8080/first';
+    que_num=2;
     try {
       processString(await HttpRequest.getString(path));
     } catch (e) {
@@ -186,11 +190,13 @@ class HexConversion extends PolymerElement {
     List<String> portmanteaux = JSON.decode(jsonString);
     LIElement wordList = $['wordList'];
     FormElement radiolist=$['radio'];
+    wordList.children.clear();
     wordList.children.add(new LIElement()..text = portmanteaux[0]);
     rightopt_id=portmanteaux[portmanteaux.length-1];
     for (int i = 1; i < portmanteaux.length-1; i++) {
       String radname='rad'+i.toString();
       LIElement rad1=$[radname];
+      rad1.children.clear();
       rad1.children.add(new LIElement()..text=portmanteaux[i]);
     }
   }
@@ -212,6 +218,34 @@ class HexConversion extends PolymerElement {
       wordList.children.add(new LIElement()..text = '错误');
     }
   }
+
+  Future next (Event e, var detail, Node target)async{
+    var tihao = que_num.toString();
+    que_num=que_num+1;
+    request = new HttpRequest();
+    await request.open('POST','http://127.0.0.1:8080/next');
+    request.onReadyStateChange.listen(absence);
+    request.send(JSON.encode(tihao));
+  }
+
+  absence(_) {
+    if (request.status == 200) {
+      List<String> portmanteaux = JSON.decode(request.responseText);
+      LIElement wordList = $['wordList'];
+      wordList.children.clear();
+      wordList.children.add(new LIElement()..text = portmanteaux[0]);
+      rightopt_id=portmanteaux[portmanteaux.length-1];
+      for (int i = 1; i < portmanteaux.length-1; i++) {
+        String radname='rad'+i.toString();
+        LIElement rad1=$[radname];
+        rad1.children.clear();
+        rad1.children.add(new LIElement()..text=portmanteaux[i]);
+      }
+    }else{
+      //stu_name.text = 'ERROR:${request.status}';
+    }
+  }
+
   void cal2() {       //将2进制转换为其他进制
     var s=$['text'];
     var s2=$['textarea2'];
