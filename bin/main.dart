@@ -41,7 +41,7 @@ next_exe(HttpRequest request) async{
   var results = await pool.query('select * from exercise where id='+name+';');
   results.forEach((row) {
     reinformation.clear();
-    reinformation.add("${row[1]}");//,"${row[3]}"," ${row[4]}","${row[5]}","${row[6]}","${row[2]}"
+    reinformation.add("${row[1]}");
     reinformation.add("${row[3]}");
     reinformation.add("${row[4]}");
     reinformation.add("${row[5]}");
@@ -54,21 +54,6 @@ next_exe(HttpRequest request) async{
   res.headers.contentType = new ContentType("application", "json", charset: "utf-8");
   request.response.write(JSON.encode(reinformation));
   request.response.close();
-  /*
-  addCorsHeaders(request.response);
-  var studentnumber,studentab,stuab;
-  studentnumber = selectstu[0];
-  studentab = selectstu[2];
-  int stu_ab1;
-  stu_ab1 = int.parse(studentab);
-  stu_ab1 = stu_ab1 + 1;
-  print(stu_ab1);
-  pool.query(
-      'UPDATE SC,C SET SC.OB = $stu_ab1 WHERE SC.CNUM = C.CNUM AND C.CNAME = "$coursename" AND SC.SNUM = "$studentnumber"'
-  );
-  request.response.write(JSON.encode(stu_ab1));
-  request.response.close();
-   */
 }
 
 
@@ -89,6 +74,3 @@ connectDB() async{
     });
 
 }
-
-/*var pool = new ConnectionPool(host: '52.8.67.180', port: 3306, user: 'dec2013stu', password: 'dec2013stu', db: 'stu_10130340101', max: 5);
-  var results = await pool.query('create table stu1(num int,name char(10));');*/

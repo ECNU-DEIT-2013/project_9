@@ -4,24 +4,24 @@ class DrawFrame{
   List<String> origin =new List();
   int conversion;
 
-  void setConversion(int conversion){
+  void setConversion(int conversion){//设置进制
     this.conversion =conversion;
   }
 
-  int getConversion(){
+  int getConversion(){//获取进制
     return conversion;
   }
 
-  void setNumbers(List<String> element){
+  void setNumbers(List<String> element){//设置数字
     numbers = element;
   }
 
-  List<String> getNumbers(){
+  List<String> getNumbers(){//获得数字
     return numbers;
   }
 
 
-  void setResults(String singleResult){
+  void setResults(String singleResult){//中间环节数字
     results.add(singleResult);
   }
 

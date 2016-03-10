@@ -89,6 +89,7 @@ class HexConversion extends PolymerElement {
       }
       else{
         alert("请输入符合进制的数字！");
+        div3.style.display="none";
       }
 
     }
@@ -103,6 +104,7 @@ class HexConversion extends PolymerElement {
       }
       else{
         alert("请输入符合进制的数字！");
+        div3.style.display="none";
       }
       //cal8();
     }
@@ -117,6 +119,7 @@ class HexConversion extends PolymerElement {
       }
       else{
         alert("请输入符合进制的数字！");
+        div3.style.display="none";
       }
     }
     else if (select.options[select.selectedIndex].value == "16") {
@@ -130,6 +133,7 @@ class HexConversion extends PolymerElement {
       }
       else{
         alert("请输入符合进制的数字！");
+        div3.style.display="none";
       }
     }
 
@@ -173,7 +177,7 @@ class HexConversion extends PolymerElement {
     div2.style.display="block";
   }
 
-  Future makeRequest(Event e) async {
+  makeRequest(Event e) async {
     //var path = 'https://www.dartlang.org/f/portmanteaux.json';
     div1=$['radio'];
     div1.style.display="block";
@@ -229,11 +233,11 @@ class HexConversion extends PolymerElement {
     }
   }
 
-  Future next (Event e, var detail, Node target)async{
+  next (Event e, var detail, Node target){
     var tihao = que_num.toString();
     que_num=que_num+1;
     request = new HttpRequest();
-    await request.open('POST','http://127.0.0.1:8080/next');
+    request.open('POST','http://127.0.0.1:8080/next');
     request.onReadyStateChange.listen(absence);
     request.send(JSON.encode(tihao));
   }
