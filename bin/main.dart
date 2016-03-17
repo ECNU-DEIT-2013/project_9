@@ -9,7 +9,7 @@ List reinformation=new List();
 
 main() async {
   connectDB();
-  var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080);
+  var server = await HttpServer.bind(InternetAddress.ANY_IP_V4, 8080);
   print("Serving at ${server.address}:${server.port}");
   server.listen((HttpRequest request) async {
     if (request.uri.path == "/first") {     //响应index.dart

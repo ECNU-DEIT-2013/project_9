@@ -17,7 +17,8 @@ p {
   height:100%;
   left: 0px;
   top: 0px;
-  background-color: #219f8e;
+  background-color: #005e4e;
+  background-image:url('pic\asfalt-dark.png');
   text-align: center;
   font-size: 24px;
   z-index: -10;
@@ -39,5 +40,5 @@ p {
   margin-right: 10%;
 }
 body{
-  background-color: #0b4828;
+  background-color: #005e4e;
 }

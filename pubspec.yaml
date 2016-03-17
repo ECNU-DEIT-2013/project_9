@@ -1,5 +1,7 @@
 name: stopwatch
 description: A sample application
+executables:
+  main:
 dependencies:
   polymer: '>=0.15.1 <0.17.0'
   dialog: any

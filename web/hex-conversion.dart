@@ -187,7 +187,7 @@ class HexConversion extends PolymerElement {
     div3.style.display="block";
     div3=$['exe_area'];
     div3.style.display="none";
-    var path = 'http://127.0.0.1:8080/first';
+    var path = 'http://120.25.171.48:8080/first';
     que_num=2;
     try {
       processString(await HttpRequest.getString(path));
@@ -237,7 +237,7 @@ class HexConversion extends PolymerElement {
     var tihao = que_num.toString();
     que_num=que_num+1;
     request = new HttpRequest();
-    request.open('POST','http://127.0.0.1:8080/next');
+    request.open('POST','http://120.25.171.48:8080/next');
     request.onReadyStateChange.listen(absence);
     request.send(JSON.encode(tihao));
   }
